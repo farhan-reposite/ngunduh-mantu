@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Akad Nikah – Farhan & Erina</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cinzel:wght@400;500;600&family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --gold: #8b6914;
+        --gold-light: #c4a44a;
+        --soft-black: #000000;
+        --text: #000000;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 500;
+        color: var(--text);
+        background: #d8d0c0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .page {
+        width: 210mm;
+        height: 297mm;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transform-origin: center center;
+      }
+
+      @media print {
+        html,
+        body {
+          background: none;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+        .page {
+          transform: none !important;
+        }
+        button {
+          display: none !important;
+        }
+      }
+
+      /* ══════════════════════════════
+         KOP SURAT — top 33%
+      ══════════════════════════════ */
+      .kop {
+        height: 99mm;
+        flex-shrink: 0;
+        background: linear-gradient(160deg, #fdfaf4, #f5eedc);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        padding: 10mm 12mm;
+        gap: 8mm;
+        border-bottom: 0.4mm solid rgba(196, 164, 74, 0.4);
+      }
+
+      /* kop border */
+      .kop::before {
+        content: "";
+        position: absolute;
+        inset: 5mm 5mm 0 5mm;
+        border: 0.4mm solid rgba(196, 164, 74, 0.45);
+        border-bottom: none;
+        pointer-events: none;
+        z-index: 10;
+      }
+      .kop::after {
+        content: "";
+        position: absolute;
+        inset: 7mm 7mm 0 7mm;
+        border: 0.15mm solid rgba(196, 164, 74, 0.22);
+        border-bottom: none;
+        pointer-events: none;
+        z-index: 10;
+      }
+
+      /* kop leaves */
+      .kop-leaf-tl {
+        position: absolute;
+        top: -5mm;
+        left: -5mm;
+        width: 70mm;
+        pointer-events: none;
+        z-index: 12;
+        opacity: 0.82;
+        transform: scale(-1);
+      }
+      .kop-leaf-tr {
+        position: absolute;
+        top: -5mm;
+        right: -5mm;
+        width: 70mm;
+        pointer-events: none;
+        z-index: 12;
+        opacity: 0.82;
+        transform: scale(-1);
+      }
+
+      /* left side of kop — title + date */
+      .kop-left {
+        flex: 0 0 70mm;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 3mm;
+        position: relative;
+        z-index: 5;
+        align-items: center;
+        padding-left: 10mm;
+      }
+      .kop-title {
+        font-family: "Great Vibes", cursive;
+        font-size: 32pt;
+        color: var(--text);
+        line-height: 1;
+      }
+      .kop-subtitle {
+        font-family: "Cinzel", serif;
+        font-size: 11pt;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--soft-black);
+        opacity: 1;
+      }
+      .kop-date {
+        font-size: 13pt;
+        font-weight: 500;
+        color: var(--text);
+        opacity: 1;
+        font-style: italic;
+        margin-top: 1mm;
+      }
+
+      /* right side of kop — recipient */
+      .kop-right {
+        flex: 0 0 100mm;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 3mm;
+        position: relative;
+        z-index: 5;
+      }
+      .kop-to-label {
+        font-size: 13pt;
+        font-weight: 500;
+        color: var(--text);
+        opacity: 1;
+      }
+      .kop-to-name {
+        font-size: 13pt;
+        font-weight: 500;
+        color: var(--text);
+        opacity: 1;
+      }
+      .kop-name-box {
+        width: 100%;
+        height: 14mm;
+        border: 0.3mm solid rgba(139, 105, 20, 0.35);
+        background: rgba(255, 255, 255, 0.4);
+      }
+      .kop-note {
+        font-size: 10pt;
+        font-weight: 600;
+        color: var(--text);
+        opacity: 1;
+        font-style: italic;
+        line-height: 1.5;
+      }
+
+      /* ══════════════════════════════
+         INVITATION BODY — bottom 67%
+      ══════════════════════════════ */
+      .body {
+        flex: 1;
+        background: linear-gradient(175deg, #f8f4ec, #f0e8d4);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 3mm;
+        padding: 6mm 14mm 10mm;
+      }
+
+      /* body border */
+      .body::before {
+        content: "";
+        position: absolute;
+        inset: 0 5mm 5mm 5mm;
+        border: 0.4mm solid rgba(196, 164, 74, 0.45);
+        border-top: none;
+        pointer-events: none;
+        z-index: 10;
+      }
+      .body::after {
+        content: "";
+        position: absolute;
+        inset: 0 7mm 7mm 7mm;
+        border: 0.15mm solid rgba(196, 164, 74, 0.22);
+        border-top: none;
+        pointer-events: none;
+        z-index: 10;
+      }
+
+      /* kop bottom leaves */
+      .kop-leaf-bl {
+        position: absolute;
+        bottom: -6mm;
+        left: -5mm;
+        width: 62mm;
+        pointer-events: none;
+        z-index: 12;
+        opacity: 0.82;
+        transform: scaleX(-1) rotate(-8deg);
+      }
+      .kop-leaf-br {
+        position: absolute;
+        bottom: -6mm;
+        right: -5mm;
+        width: 62mm;
+        pointer-events: none;
+        z-index: 12;
+        opacity: 0.82;
+        transform: scaleX(-1) rotate(-8deg);
+      }
+      .kop-leaf-mid {
+        position: absolute;
+        top: -5mm;
+        left: 50%;
+        transform: translateX(-50%) scale(-1);
+        width: 84mm;
+        pointer-events: none;
+        z-index: 12;
+        opacity: 0.72;
+      }
+
+      /* body top leaves */
+      .body-leaf-tl {
+        position: absolute;
+        top: -6mm;
+        left: -5mm;
+        width: 62mm;
+        pointer-events: none;
+        z-index: 12;
+        opacity: 0.82;
+        transform: scale(-1) rotate(-10deg);
+      }
+      .body-leaf-tr {
+        position: absolute;
+        top: -6mm;
+        right: -5mm;
+        width: 62mm;
+        pointer-events: none;
+        z-index: 12;
+        opacity: 0.82;
+        transform: scale(-1) rotate(-10deg);
+      }
+
+      /* body leaves */
+      .body-leaf-bl {
+        position: absolute;
+        bottom: -5mm;
+        left: -5mm;
+        width: 90mm;
+        pointer-events: none;
+        z-index: 12;
+        opacity: 0.88;
+        transform: scaleX(-1);
+      }
+      .body-leaf-br {
+        position: absolute;
+        bottom: -5mm;
+        right: -5mm;
+        width: 90mm;
+        pointer-events: none;
+        z-index: 12;
+        opacity: 0.88;
+        transform: scaleX(-1);
+      }
+      .body-leaf-mid {
+        position: absolute;
+        bottom: 0mm;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 65mm;
+        pointer-events: none;
+        z-index: 12;
+        opacity: 0.78;
+      }
+
+      /* content */
+      .content {
+        position: relative;
+        z-index: 5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3mm;
+        width: 100%;
+        text-align: center;
+      }
+
+      .bismillah {
+        font-size: 24pt;
+        direction: rtl;
+        color: var(--soft-black);
+        opacity: 1;
+        line-height: 1.6;
+      }
+      .invite-label {
+        font-family: "Cinzel", serif;
+        font-size: 11pt;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--soft-black);
+        opacity: 1;
+      }
+      .invite-intro {
+        font-size: 13pt;
+        font-weight: 500;
+        line-height: 1.85;
+        color: var(--text);
+        opacity: 1;
+      }
+
+      .hr-gold {
+        display: flex;
+        align-items: center;
+        gap: 3mm;
+        width: 100%;
+      }
+      .hr-gold span {
+        flex: 1;
+        height: 0.2mm;
+        background: rgba(196, 164, 74, 0.32);
+      }
+      .hr-gold em {
+        font-style: normal;
+        color: var(--soft-black);
+        font-size: 9pt;
+      }
+
+      .names-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0mm;
+        width: 100%;
+      }
+      .name-script {
+        font-family: "Great Vibes", cursive;
+        font-size: 36pt;
+        color: var(--text);
+        line-height: 1.1;
+      }
+      .name-full {
+        font-size: 16pt;
+        font-weight: 500;
+        color: var(--text);
+        opacity: 1;
+      }
+      .amp-sym {
+        font-family: "Great Vibes", cursive;
+        font-size: 30pt;
+        color: var(--soft-black);
+        margin: 0;
+      }
+
+      .details-row {
+        display: flex;
+        align-items: flex-start;
+        width: 100%;
+      }
+      .detail-cell {
+        flex: 1;
+        text-align: center;
+        padding: 0 3mm;
+      }
+      .detail-cell + .detail-cell {
+        border-left: 0.2mm solid rgba(196, 164, 74, 0.3);
+      }
+      .detail-label {
+        font-family: "Cinzel", serif;
+        font-size: 9pt;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--soft-black);
+        opacity: 1;
+        margin-bottom: 1mm;
+      }
+      .detail-value {
+        font-size: 14pt;
+        font-weight: 600;
+        color: var(--text);
+        line-height: 1.25;
+      }
+      .detail-sub {
+        font-size: 13pt;
+        color: var(--text);
+        opacity: 1;
+        font-style: italic;
+      }
+
+      /* kop sender info */
+      .kop-from-label {
+        font-family: "Cinzel", serif;
+        font-size: 9pt;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--soft-black);
+        opacity: 1;
+      }
+      .kop-from-name {
+        font-family: "Great Vibes", cursive;
+        font-size: 16pt;
+        color: var(--text);
+      }
+      .kop-from-addr {
+        font-size: 10pt;
+        font-weight: 600;
+        color: var(--text);
+        opacity: 1;
+        font-style: italic;
+      }
+      .kop-divider {
+        width: 60%;
+        height: 0.3mm;
+        background: rgba(196, 164, 74, 0.35);
+        margin: 2mm 0;
+      }
+
+      /* tighter invite intro block */
+      .invite-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5mm;
+        margin-top: -1.5mm;
+      }
+
+      /* closing / signature */
+      .closing {
+        font-family: "Great Vibes", cursive;
+        font-size: 24pt;
+        color: var(--soft-black);
+        margin-top: 6mm;
+      }
+      .sign-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5mm;
+        margin-top: 0;
+      }
+      .sign-hormat {
+        font-size: 14pt;
+        font-weight: 500;
+        color: var(--text);
+        opacity: 1;
+        font-style: italic;
+      }
+      .sign-name {
+        font-size: 16pt;
+        color: var(--text);
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 1.5mm;
+        text-decoration-color: rgba(139, 105, 20, 0.5);
+      }
+      .sign-sekeluarga {
+        font-size: 14pt;
+        font-weight: 500;
+        color: var(--text);
+        opacity: 1;
+        font-style: italic;
+      }
+
+      /* ── NB note ── */
+      .nb-note {
+        position: absolute;
+        bottom: 10mm;
+        left: 26mm;
+        z-index: 13;
+        font-size: 14pt;
+        font-weight: 500;
+        font-style: italic;
+        color: var(--text);
+        opacity: 1;
+        text-align: left;
+        line-height: 1.5;
+      }
+      .nb-note strong {
+        font-style: normal;
+        font-weight: 600;
+        opacity: 1;
+        color: var(--soft-black);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <!-- ── KOP SURAT ── -->
+      <div class="kop">
+        <img class="kop-leaf-tl" src="right-bottom-leaf-top.png" alt="" />
+        <img class="kop-leaf-tr" src="left-bottom-leaf-top.png" alt="" />
+        <img class="kop-leaf-bl" src="right-bottom-leaf-bottom.png" alt="" />
+        <img class="kop-leaf-br" src="left-bottom-leaf-bottom.png" alt="" />
+        <img class="kop-leaf-mid" src="middle-bottom-leaf.png" alt="" />
+
+        <div class="kop-left">
+          <div class="kop-from-label">Keluarga</div>
+          <div class="kop-from-name">Mohammad Imam Syafi'ih</div>
+          <div class="kop-from-addr">Jln. Kangenan No. 96 Pamekasan</div>
+          <div class="kop-divider"></div>
+          <div class="kop-title">Undangan</div>
+          <div class="kop-subtitle">Akad Nikah</div>
+          <div class="kop-date">Rabu, 8 Juli 2026</div>
+        </div>
+
+        <div class="kop-right">
+          <div class="kop-to-label">Kepada Yth.</div>
+          <div class="kop-to-name">Bapak/Ibu/Saudara/i :</div>
+          <div class="kop-name-box"></div>
+          <div class="kop-note">
+            Mohon maaf apabila ada kekeliruan dalam penulisan nama dan gelar
+          </div>
+        </div>
+      </div>
+
+      <!-- ── INVITATION BODY ── -->
+      <div class="body">
+        <img class="body-leaf-tl" src="right-bottom-leaf-bottom.png" alt="" />
+        <img class="body-leaf-tr" src="left-bottom-leaf-bottom.png" alt="" />
+        <img class="body-leaf-bl" src="right-bottom-leaf-top.png" alt="" />
+        <img class="body-leaf-br" src="left-bottom-leaf-top.png" alt="" />
+
+        <div class="content">
+          <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+          <div class="invite-block">
+            <div class="invite-label">
+              Dengan memohon rahmat dan ridho Allah SWT
+            </div>
+            <p class="invite-intro">
+              Kami mengundang Bapak/Ibu/Saudara/i untuk hadir<br />
+              dan memberikan doa restu pada acara Akad Nikah putra-putri kami:
+            </p>
+          </div>
+          w
+          <div class="hr-gold"><span></span><em>❧</em><span></span></div>
+
+          <div class="names-col">
+            <div class="name-script">Erina Khalisah Nurindriyani</div>
+            <div class="name-full">
+              Putri dari Bapak Mohammad Imam Syafi'ih &amp; Ibu Siti Jukhairiyah
+            </div>
+            <div class="amp-sym">&amp;</div>
+            <div class="name-script">Muhammad Farhan Binashrillah</div>
+            <div class="name-full">
+              Putra dari Bapak Dedy Wirawan Soedibyo &amp; Ibu Ika Wahyurini
+            </div>
+          </div>
+
+          <div class="hr-gold"><span></span><em>❧</em><span></span></div>
+
+          <div class="details-row">
+            <div class="detail-cell">
+              <div class="detail-label">Waktu</div>
+              <div class="detail-value">09.00 Pagi</div>
+              <div class="detail-sub">Hingga selesai</div>
+            </div>
+            <div class="detail-cell">
+              <div class="detail-label">Tempat</div>
+              <div class="detail-value">Rumah Mempelai Wanita</div>
+              <div class="detail-sub">Jl. Kangenan No. 96, Pamekasan</div>
+            </div>
+            <div class="detail-cell">
+              <div class="detail-label">Hari &amp; Tanggal</div>
+              <div class="detail-value">Rabu, 8 Juli 2026</div>
+              <div class="detail-sub">22 Muharram 1448 H</div>
+            </div>
+          </div>
+
+          <div class="closing">Wassalamu'alaikum Wr. Wb.</div>
+          <div class="sign-block">
+            <div class="sign-hormat">Hormat Kami</div>
+            <div class="sign-name">Mohammad Imam Syafi'ih</div>
+            <div class="sign-sekeluarga">Sekeluarga</div>
+          </div>
+        </div>
+
+        <!-- ── NB Note ── -->
+        <div class="nb-note">
+          <strong>NB:</strong> Maaf tidak menerima sumbangan kecuali Doa.
+        </div>
+      </div>
+    </div>
+
+    <button
+      onclick="window.print()"
+      style="
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 999;
+        font-family: &quot;Cinzel&quot;, serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #000000;
+        background: #faf7f2;
+        border: 1px solid rgba(196, 164, 74, 0.5);
+        padding: 12px 24px;
+        cursor: pointer;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+      "
+    >
+      ⬇ Export PDF
+    </button>
+
+    <script>
+      function scaleToFit() {
+        const page = document.querySelector(".page");
+        const scaleX = window.innerWidth / page.offsetWidth;
+        const scaleY = window.innerHeight / page.offsetHeight;
+        page.style.transform = "scale(" + Math.min(scaleX, scaleY) + ")";
+      }
+      scaleToFit();
+      window.addEventListener("resize", scaleToFit);
+    </script>
+  </body>
+</html>

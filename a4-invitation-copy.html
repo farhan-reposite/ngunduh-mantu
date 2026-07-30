@@ -1,0 +1,1632 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Wedding of Erina & Farhan</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Great+Vibes&family=Jost:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @page {
+        size: 142.14mm 199mm;
+        margin: 0;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --gold: #9a7d3a;
+        --gold-light: #c4a55a;
+        --text-dark: #1c160e;
+        --text-mid: #4a3f2e;
+        --text-soft: #7c6d56;
+        --panel-bg: #faf8f3;
+        --sheet-bg: #ffffff;
+        --panel-texture: url("background-image.png");
+      }
+
+      html,
+      body {
+        width: 100%;
+        background: #ffffff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        padding: 24px 0;
+      }
+
+      /* ── Sheet ── */
+      .sheet {
+        width: 142.14mm;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        padding: 0;
+        background: transparent;
+        overflow: visible;
+        transform-origin: center top;
+        flex-shrink: 0;
+      }
+
+      .sheet > .panel,
+      .sheet > .envelope-back {
+        width: 100%;
+        height: 199mm;
+        flex-shrink: 0;
+        break-after: page;
+        page-break-after: always;
+      }
+
+      .sheet > *:last-child {
+        break-after: auto;
+        page-break-after: auto;
+      }
+
+      /* ── Panel shell ── */
+      .panel {
+        position: relative;
+        overflow: hidden;
+        background:
+          radial-gradient(
+            ellipse at center,
+            rgba(255, 255, 255, 0.8) 0%,
+            rgba(250, 248, 242, 0.75) 58%,
+            rgba(238, 233, 221, 0.5) 100%
+          ),
+          #faf8f1;
+        border-radius: 0;
+      }
+
+      .panel::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--panel-texture) center center / cover no-repeat;
+        opacity: 0.22;
+        -webkit-mask-image: linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(0, 0, 0, 0.45) 54%,
+          #000 100%
+        );
+        mask-image: linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(0, 0, 0, 0.45) 54%,
+          #000 100%
+        );
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .details::after {
+        inset: 30mm 0 -30mm;
+        background-position: center center;
+        opacity: 0.12;
+      }
+
+      .panel::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 5.5mm;
+        border: 0.18mm solid rgba(56, 52, 44, 0.42);
+        pointer-events: none;
+        z-index: 10;
+      }
+
+      .panel-content {
+        position: relative;
+        z-index: 5;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      /* ── Leaf images ── */
+      .leaf-tr {
+        position: absolute;
+        top: -3mm;
+        right: -6mm;
+        z-index: 4;
+        width: 70mm;
+        opacity: 1;
+        pointer-events: none;
+        transform: rotate(-20deg);
+      }
+
+      .leaf-bl {
+        position: absolute;
+        bottom: -3mm;
+        left: -3mm;
+        z-index: 4;
+        width: 58mm;
+        opacity: 1;
+        pointer-events: none;
+      }
+
+      .leaf-bl-upper {
+        position: absolute;
+        left: -5mm;
+        bottom: 30mm;
+        z-index: 3;
+        width: 40mm;
+        pointer-events: none;
+      }
+
+      .leaf-br-upper {
+        position: absolute;
+        right: -5mm;
+        bottom: 30mm;
+        z-index: 3;
+        width: 40mm;
+        pointer-events: none;
+      }
+
+      .edge-leaf {
+        position: absolute;
+        z-index: 3;
+        pointer-events: none;
+      }
+
+      .leaf-tl {
+        top: -5mm;
+        left: -5mm;
+        width: 70mm;
+        transform: rotate(20deg);
+      }
+
+      .leaf-br {
+        right: -3mm;
+        bottom: -3mm;
+        width: 58mm;
+      }
+
+      .leaf-mid-l {
+        top: 55mm;
+        left: -42mm;
+        z-index: 2;
+        width: 47mm;
+        transform: rotate(100deg) scaleX(-1);
+      }
+
+      .leaf-mid-r {
+        top: 65mm;
+        right: -34mm;
+        z-index: 2;
+        width: 38mm;
+        transform: rotate(-90deg) scaleX(-1);
+      }
+
+      .details .leaf-tr {
+        width: 60mm;
+      }
+      .details .leaf-bl {
+        width: 45mm;
+      }
+      .details .leaf-bl-upper,
+      .details .leaf-br-upper {
+        bottom: 23mm;
+        width: 34mm;
+      }
+      .details .leaf-tl {
+        width: 60mm;
+      }
+      .details .leaf-br {
+        width: 45mm;
+      }
+      .details .leaf-mid-l,
+      .details .leaf-mid-r {
+        width: 28mm;
+      }
+      .details .leaf-mid-l {
+        left: -20mm;
+        top: 38mm;
+      }
+      .details .leaf-mid-r {
+        right: -20mm;
+        top: 39mm;
+      }
+
+      /* ═══════════════════════════════════
+         COVER PANEL
+      ═══════════════════════════════════ */
+      .cover .panel-content {
+        padding: 76mm 20mm 60mm;
+        justify-content: center;
+      }
+
+      .cover::after {
+        display: none;
+      }
+
+      .cover-feature-image {
+        position: absolute;
+        left: 50%;
+        width: 100%;
+        height: auto;
+        transform: translateX(-50%);
+        pointer-events: none;
+        z-index: 4;
+      }
+
+      .cover-feature-top {
+        top: 0;
+      }
+      .cover-feature-bottom {
+        bottom: 0;
+        transform: translateX(-50%) rotate(180deg);
+      }
+
+      .cover-upper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .eyebrow {
+        font-family: "Jost", sans-serif;
+        font-weight: 200;
+        font-size: 7.8pt;
+        letter-spacing: 0.52em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+
+      .cover-names {
+        margin-top: 10mm;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .name-lg {
+        font-family: "Great Vibes", cursive;
+        font-size: 54pt;
+        color: var(--text-dark);
+        line-height: 1;
+      }
+
+      .amp-cover {
+        margin: 1.5mm 0;
+        font-family: "Great Vibes", cursive;
+        font-weight: 300;
+        font-size: 20pt;
+        letter-spacing: 0.55em;
+        text-transform: uppercase;
+        color: var(--gold-light);
+      }
+
+      .ornament {
+        margin-top: 8mm;
+        display: flex;
+        align-items: center;
+        gap: 3.5mm;
+      }
+
+      .orn-rule {
+        width: 16mm;
+        height: 0.18mm;
+        background: var(--gold-light);
+        opacity: 0.55;
+      }
+
+      .orn-dot {
+        width: 1.4mm;
+        height: 1.4mm;
+        background: var(--gold-light);
+        transform: rotate(45deg);
+        opacity: 0.7;
+      }
+
+      .cover-lower {
+        width: 84mm;
+      }
+
+      .verse {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 10.4pt;
+        font-weight: 300;
+        font-style: italic;
+        line-height: 1.76;
+        color: var(--text-soft);
+      }
+
+      .verse-ref {
+        margin-top: 4mm;
+        font-family: "Jost", sans-serif;
+        font-weight: 200;
+        font-size: 7.2pt;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: var(--gold);
+        opacity: 0.75;
+      }
+
+      .arum .panel-content {
+        padding: 28mm 14mm 22mm;
+        justify-content: center;
+      }
+
+      .arum-card {
+        position: relative;
+        width: 94mm;
+        padding: 13mm 12mm 11mm;
+        border: 0.18mm solid rgba(154, 125, 58, 0.28);
+        border-radius: 3mm;
+        background: rgba(250, 248, 243, 0.42);
+      }
+
+      .arum-card::before {
+        content: "";
+        position: absolute;
+        inset: 3mm;
+        border: 0.12mm solid rgba(196, 165, 90, 0.22);
+        border-radius: 2mm;
+        pointer-events: none;
+      }
+
+      .arum-card::after {
+        content: "";
+        position: absolute;
+        top: -1.1mm;
+        left: 50%;
+        width: 2mm;
+        height: 2mm;
+        border: 0.16mm solid var(--gold-light);
+        background: #faf8f3;
+        transform: translateX(-50%) rotate(45deg);
+      }
+
+      .arum .eyebrow {
+        margin-bottom: 10mm;
+      }
+
+      .arum .verse {
+        font-size: 11pt;
+        line-height: 1.76;
+        color: var(--text-soft);
+      }
+
+      .arum .verse-ref {
+        margin-top: 6mm;
+        font-size: 7.2pt;
+      }
+
+      /* ═══════════════════════════════════
+         DETAILS PANEL
+      ═══════════════════════════════════ */
+      .details .panel-content {
+        padding: 12mm 14mm 10mm;
+        justify-content: flex-start;
+      }
+
+      .details-upper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .bismillah {
+        font-size: 19pt;
+        direction: rtl;
+        color: var(--gold);
+        line-height: 1.1;
+        letter-spacing: 0.02em;
+      }
+
+      .invite-intro {
+        margin-top: 3mm;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 10.2pt;
+        font-weight: 300;
+        line-height: 1.6;
+        color: var(--text-soft);
+      }
+
+      .couple {
+        margin-top: 6mm;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .person-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .name-sm {
+        font-family: "Great Vibes", cursive;
+        font-size: 25pt;
+        color: var(--text-dark);
+        line-height: 1.05;
+      }
+
+      .name-lineage {
+        margin-top: 0.6mm;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 9.1pt;
+        font-weight: 300;
+        font-style: italic;
+        color: var(--text-soft);
+        line-height: 1.4;
+      }
+
+      .amp-between {
+        margin: 3mm 0;
+        font-family: "Jost", sans-serif;
+        font-weight: 200;
+        font-size: 7.2pt;
+        letter-spacing: 0.46em;
+        text-transform: uppercase;
+        color: var(--gold-light);
+      }
+
+      .rule {
+        width: 58mm;
+        height: 0.15mm;
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(154, 125, 58, 0.38),
+          transparent
+        );
+        margin: 4mm 0;
+      }
+
+      .event-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .event-tag {
+        font-family: "Jost", sans-serif;
+        font-weight: 200;
+        font-size: 7.2pt;
+        letter-spacing: 0.48em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+
+      .event-date {
+        margin-top: 1.5mm;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 14.5pt;
+        font-weight: 500;
+        color: var(--text-dark);
+        letter-spacing: 0.03em;
+      }
+
+      .event-info {
+        margin-top: 1mm;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 10.2pt;
+        font-weight: 300;
+        color: var(--text-mid);
+        line-height: 1.52;
+      }
+
+      .details-lower {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 5mm;
+      }
+
+      .closing-text {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 9.4pt;
+        font-weight: 300;
+        line-height: 1.6;
+        color: var(--text-soft);
+        width: 100%;
+      }
+
+      .host-script {
+        margin-top: 2.5mm;
+        font-family: "Great Vibes", cursive;
+        font-size: 17pt;
+        color: var(--gold);
+        line-height: 1;
+      }
+
+      .rule-thin {
+        width: 100%;
+        height: 0.15mm;
+        background: rgba(154, 125, 58, 0.22);
+        margin: 2.5mm 0;
+      }
+
+      .families {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6mm;
+        width: 100%;
+      }
+
+      .family-label {
+        font-family: "Jost", sans-serif;
+        font-weight: 200;
+        font-size: 6.8pt;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: var(--gold);
+        opacity: 0.85;
+      }
+
+      .family-name {
+        margin-top: 1mm;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 9.4pt;
+        font-weight: 400;
+        color: var(--text-dark);
+        line-height: 1.32;
+      }
+
+      /* ══════════════════════════════
+         ENVELOPE BACK — one-panel size
+      ══════════════════════════════ */
+      .envelope-back-wrapper {
+        /* same padding/gap context as .sheet so it visually aligns */
+        display: none;
+      }
+
+      .envelope-back {
+        /* one panel = (448.43mm - 2*5.5mm - 2*5.5mm) / 3  ≈ 139.14mm wide, 199mm tall */
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        background:
+          radial-gradient(
+            ellipse at center,
+            rgba(255, 255, 255, 0.82) 0%,
+            rgba(250, 248, 242, 0.78) 62%,
+            rgba(239, 234, 223, 0.56) 100%
+          ),
+          #faf8f1;
+        border-radius: 0;
+        /* same hairline border as panels */
+        border: 0.18mm solid rgba(56, 52, 44, 0.42);
+      }
+
+      .envelope-opening-image {
+        position: absolute;
+        top: 2%;
+        left: 50%;
+        width: 27%;
+        aspect-ratio: 1 / 1;
+        height: auto;
+        transform: translateX(-50%);
+        object-fit: cover;
+        object-position: center;
+        pointer-events: none;
+        z-index: 3;
+      }
+
+      .envelope-bottom-image {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 80%;
+        object-fit: cover;
+        object-position: center bottom;
+        pointer-events: none;
+        z-index: 3;
+      }
+
+      .envelope-back svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 2;
+      }
+
+      .envelope-back svg:not(.envelope-plain) {
+        display: none;
+      }
+
+      /* ── Export buttons ── */
+      .export-actions {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 999;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .print-btn,
+      .png-btn {
+        font-family: "Jost", sans-serif;
+        font-weight: 300;
+        font-size: 9px;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--gold);
+        background: #faf8f3;
+        border: 1px solid rgba(154, 125, 58, 0.4);
+        padding: 12px 28px;
+        cursor: pointer;
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+        transition:
+          border-color 0.2s,
+          color 0.2s;
+      }
+
+      .print-btn:hover,
+      .png-btn:hover {
+        border-color: rgba(154, 125, 58, 0.75);
+        color: var(--gold-light);
+      }
+
+      .png-btn:disabled {
+        cursor: wait;
+        opacity: 0.65;
+      }
+
+      @media print {
+        html,
+        body {
+          background: none;
+          gap: 0;
+          padding: 0;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+        .sheet,
+        .envelope-back-wrapper {
+          transform: none !important;
+        }
+        .envelope-back-wrapper {
+          display: none !important;
+          width: 0 !important;
+          height: 0 !important;
+        }
+        .export-actions {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ══════════════════════════════
+         SHEET — 3 panels
+    ══════════════════════════════ -->
+    <main class="sheet" aria-label="Wedding invitation">
+      <!-- COVER -->
+      <section class="panel cover">
+        <img
+          class="cover-feature-image cover-feature-top"
+          src="big-middle-top.png"
+          alt=""
+        />
+        <img
+          class="cover-feature-image cover-feature-bottom"
+          src="big-middle-top.png"
+          alt=""
+        />
+
+        <div style="margin-bottom: 20px" class="panel-content">
+          <div class="cover-upper">
+            <div class="eyebrow">The Wedding Of</div>
+            <div class="ornament">
+              <div class="orn-rule"></div>
+              <div class="orn-dot"></div>
+              <div class="orn-rule"></div>
+            </div>
+
+            <div class="cover-names">
+              <div class="name-lg">Erina</div>
+              <div class="amp-cover">&amp;</div>
+              <div class="name-lg">Farhan</div>
+            </div>
+
+            <div class="ornament" style="margin-bottom: 100px">
+              <div class="orn-rule"></div>
+              <div class="orn-dot"></div>
+              <div class="orn-rule"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ENVELOPE BACK -->
+      <div class="envelope-back" aria-hidden="true">
+        <img class="envelope-opening-image" src="envelope-opening.png" alt="" />
+        <img
+          class="envelope-bottom-image"
+          src="envelope-bottom-part.png"
+          alt=""
+        />
+        <svg
+          class="envelope-plain"
+          viewBox="0 0 100 140"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <defs>
+            <filter
+              id="plain-flap-shadow-inline"
+              x="-8%"
+              y="-8%"
+              width="116%"
+              height="122%"
+            >
+              <feDropShadow
+                dx="0"
+                dy="1.2"
+                stdDeviation="1.05"
+                flood-color="rgba(32, 30, 26, 0.16)"
+              />
+            </filter>
+            <filter
+              id="plain-crease-soft-inline"
+              x="-8%"
+              y="-40%"
+              width="116%"
+              height="180%"
+            >
+              <feGaussianBlur stdDeviation="0.55" />
+            </filter>
+            <linearGradient
+              id="plain-paper-inline"
+              x1="50%"
+              y1="0%"
+              x2="50%"
+              y2="100%"
+            >
+              <stop offset="0%" stop-color="#fffdf8" />
+              <stop offset="62%" stop-color="#fbf8f0" />
+              <stop offset="100%" stop-color="#f7f2e8" />
+            </linearGradient>
+            <linearGradient
+              id="plain-flap-inline"
+              x1="50%"
+              y1="0%"
+              x2="50%"
+              y2="100%"
+            >
+              <stop offset="0%" stop-color="#fffefa" />
+              <stop offset="100%" stop-color="#f8f4eb" />
+            </linearGradient>
+            <linearGradient
+              id="plain-crease-inline"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="0%"
+            >
+              <stop offset="0%" stop-color="#8b8b86" />
+              <stop offset="50%" stop-color="#5f605d" />
+              <stop offset="100%" stop-color="#8b8b86" />
+            </linearGradient>
+          </defs>
+
+          <rect width="100" height="140" fill="url(#plain-paper-inline)" />
+          <path
+            d="M0 0H100V20.8L50 36.7L0 20.8Z"
+            fill="url(#plain-flap-inline)"
+            filter="url(#plain-flap-shadow-inline)"
+          />
+          <path
+            d="M0 20.8L50 36.7L100 20.8"
+            fill="none"
+            stroke="#3d3f3e"
+            stroke-opacity="0.22"
+            stroke-width="0.8"
+            filter="url(#plain-crease-soft-inline)"
+          />
+          <path
+            d="M0 20.8L50 36.7L100 20.8"
+            fill="none"
+            stroke="url(#plain-crease-inline)"
+            stroke-opacity="0.34"
+            stroke-width="0.24"
+          />
+        </svg>
+      </div>
+
+      <!-- VERSE -->
+      <section class="panel arum">
+        <img class="leaf-tr" src="right-bottom-leaf-top.png" alt="" />
+        <img class="leaf-bl" src="left-bottom-leaf-bottom.png" alt="" />
+        <img class="leaf-bl-upper" src="left-bottom-leaf-top.png" alt="" />
+        <img class="edge-leaf leaf-tl" src="left-bottom-leaf-top.png" alt="" />
+        <img
+          class="edge-leaf leaf-br"
+          src="right-bottom-leaf-bottom.png"
+          alt=""
+        />
+        <img class="leaf-br-upper" src="right-bottom-leaf-top.png" alt="" />
+        <img class="edge-leaf leaf-mid-l" src="small-leaf-left.png" alt="" />
+        <img class="edge-leaf leaf-mid-r" src="small-leaf-right.png" alt="" />
+
+        <div class="panel-content">
+          <div class="arum-card">
+            <div class="verse">
+              "Dan diantara tanda-tanda kekuasaan-Nya ialah diciptakan-Nya
+              pasangan hidup dari jenismu sendiri supaya kamu mendapatkan
+              ketenangan hati, dan dijadikan-Nya kasih sayang diantara kamu.
+              Sesungguhnya yang demikian itu menjadi tanda-tanda kebesaran-Nya
+              bagi orang-orang yang berfikir"
+            </div>
+            <div class="verse-ref">Q.S. Ar-Ruum : 21</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DETAILS -->
+      <section class="panel details">
+        <img class="leaf-tr" src="right-bottom-leaf-top.png" alt="" />
+        <img class="leaf-bl" src="left-bottom-leaf-bottom.png" alt="" />
+        <img class="leaf-bl-upper" src="left-bottom-leaf-top.png" alt="" />
+        <img class="edge-leaf leaf-tl" src="left-bottom-leaf-top.png" alt="" />
+        <img
+          class="edge-leaf leaf-br"
+          src="right-bottom-leaf-bottom.png"
+          alt=""
+        />
+        <img class="leaf-br-upper" src="right-bottom-leaf-top.png" alt="" />
+        <img class="edge-leaf leaf-mid-l" src="small-leaf-left.png" alt="" />
+        <img class="edge-leaf leaf-mid-r" src="small-leaf-right.png" alt="" />
+
+        <div class="panel-content">
+          <div class="details-upper">
+            <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+
+            <p class="invite-intro">
+              Assalamu'alaikum Warahmatullahi Wabarakatuh<br />
+              Dengan memohon ridho serta rahmat Allah Subhanahu Wa Ta'ala,<br />
+              kami bermaksud menyelenggarakan resepsi pernikahan putra-putri
+              kami
+            </p>
+
+            <div class="couple">
+              <div class="person-block">
+                <div class="name-sm">Erina Khalisah Nurindriyani</div>
+                <div class="name-lineage">
+                  Putri dari Bapak Muhammad Imam Syafi'ih &amp; Ibu Siti
+                  Jukhairiyah
+                </div>
+              </div>
+
+              <div class="amp-between">dengan</div>
+
+              <div class="person-block">
+                <div class="name-sm">Muhammad Farhan Binashrillah</div>
+                <div class="name-lineage">
+                  Putra dari Bapak Dedy Wirawan Soedibyo &amp; Ibu Rr. Ika
+                  Wahyurini
+                </div>
+              </div>
+            </div>
+
+            <div class="rule"></div>
+
+            <div class="event-block">
+              <div class="event-tag">Resepsi</div>
+              <div class="event-date">Rabu, 08 Juli 2026</div>
+              <div class="event-info">
+                Jam 19.00 WIB<br />
+                Bakrowil Pamekasan<br />
+                Jl. Slamet Riadi — Pamekasan
+              </div>
+            </div>
+          </div>
+
+          <div class="details-lower">
+            <p class="closing-text">
+              Merupakan suatu kehormatan dan kebahagiaan bagi kami sekeluarga
+              jika bapak/ibu/saudara/saudari berkenan memenuhi undangan kami.
+              Atas kehadiran dan doa restu, kami mengucapkan terima kasih.<br />
+              Wassalamu'alaikum Warahmatullaahi Wabarakaatuh
+            </p>
+
+            <div
+              class="host-script"
+              style="margin-bottom: 12px; margin-top: 16px"
+            >
+              Kami Yang Berbahagia
+            </div>
+            <div class="rule-thin"></div>
+
+            <div class="families">
+              <div>
+                <div class="family-label">Keluarga</div>
+                <div class="family-name">
+                  Muhammad Imam Syafi'ih<br />&amp; Ibu Siti Jukhairiyah
+                </div>
+              </div>
+              <div>
+                <div class="family-label">Keluarga</div>
+                <div class="family-name">
+                  Dedy Wirawan Soedibyo<br />&amp; Ibu Rr. Ika Wahyurini
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ══════════════════════════════
+         ENVELOPE BACK — one panel
+    ══════════════════════════════ -->
+    <div class="envelope-back-wrapper">
+      <div class="envelope-back">
+        <img class="envelope-opening-image" src="envelope-opening.png" alt="" />
+        <img
+          class="envelope-bottom-image"
+          src="envelope-bottom-part.png"
+          alt=""
+        />
+        <svg
+          class="envelope-plain"
+          viewBox="0 0 100 140"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <defs>
+            <filter
+              id="plain-flap-shadow"
+              x="-8%"
+              y="-8%"
+              width="116%"
+              height="122%"
+            >
+              <feDropShadow
+                dx="0"
+                dy="1.2"
+                stdDeviation="1.05"
+                flood-color="rgba(32, 30, 26, 0.16)"
+              />
+            </filter>
+            <filter
+              id="plain-crease-soft"
+              x="-8%"
+              y="-40%"
+              width="116%"
+              height="180%"
+            >
+              <feGaussianBlur stdDeviation="0.55" />
+            </filter>
+            <linearGradient
+              id="plain-paper"
+              x1="50%"
+              y1="0%"
+              x2="50%"
+              y2="100%"
+            >
+              <stop offset="0%" stop-color="#fffdf8" />
+              <stop offset="62%" stop-color="#fbf8f0" />
+              <stop offset="100%" stop-color="#f7f2e8" />
+            </linearGradient>
+            <linearGradient id="plain-flap" x1="50%" y1="0%" x2="50%" y2="100%">
+              <stop offset="0%" stop-color="#fffefa" />
+              <stop offset="100%" stop-color="#f8f4eb" />
+            </linearGradient>
+            <linearGradient id="plain-crease" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#8b8b86" />
+              <stop offset="50%" stop-color="#5f605d" />
+              <stop offset="100%" stop-color="#8b8b86" />
+            </linearGradient>
+          </defs>
+
+          <rect width="100" height="140" fill="url(#plain-paper)" />
+          <path
+            d="M0 0H100V20.8L50 36.7L0 20.8Z"
+            fill="url(#plain-flap)"
+            filter="url(#plain-flap-shadow)"
+          />
+          <path
+            d="M0 20.8L50 36.7L100 20.8"
+            fill="none"
+            stroke="#3d3f3e"
+            stroke-opacity="0.22"
+            stroke-width="0.8"
+            filter="url(#plain-crease-soft)"
+          />
+          <path
+            d="M0 20.8L50 36.7L100 20.8"
+            fill="none"
+            stroke="url(#plain-crease)"
+            stroke-opacity="0.34"
+            stroke-width="0.24"
+          />
+        </svg>
+        <svg
+          viewBox="0 0 100 150"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <defs>
+            <!-- Shadow on the crease line itself -->
+            <filter
+              id="crease-shd"
+              x="-20%"
+              y="-20%"
+              width="140%"
+              height="140%"
+            >
+              <feGaussianBlur
+                in="SourceAlpha"
+                stdDeviation="0.8"
+                result="blur"
+              />
+              <feOffset dx="0" dy="0.5" result="off" />
+              <feFlood flood-color="rgba(28,22,14,0.15)" result="col" />
+              <feComposite in="col" in2="off" operator="in" result="shadow" />
+              <feMerge>
+                <feMergeNode in="shadow" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+
+            <!-- Soft shadow on left flap -->
+            <filter
+              id="flap-shd-l"
+              x="-10%"
+              y="-10%"
+              width="120%"
+              height="120%"
+            >
+              <feGaussianBlur
+                in="SourceAlpha"
+                stdDeviation="1.2"
+                result="blur"
+              />
+              <feOffset dx="0.6" dy="0.8" result="off" />
+              <feFlood flood-color="rgba(28,22,14,0.10)" result="col" />
+              <feComposite in="col" in2="off" operator="in" result="shadow" />
+              <feMerge>
+                <feMergeNode in="shadow" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+
+            <!-- Soft shadow on right flap -->
+            <filter
+              id="flap-shd-r"
+              x="-10%"
+              y="-10%"
+              width="120%"
+              height="120%"
+            >
+              <feGaussianBlur
+                in="SourceAlpha"
+                stdDeviation="1.2"
+                result="blur"
+              />
+              <feOffset dx="-0.6" dy="0.8" result="off" />
+              <feFlood flood-color="rgba(28,22,14,0.10)" result="col" />
+              <feComposite in="col" in2="off" operator="in" result="shadow" />
+              <feMerge>
+                <feMergeNode in="shadow" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+
+            <!-- Faint tint for flap faces — left -->
+            <linearGradient id="flap-l" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#e8e0cc" stop-opacity="0.38" />
+              <stop offset="100%" stop-color="#ddd4ba" stop-opacity="0.52" />
+            </linearGradient>
+
+            <!-- Faint tint for flap faces — right -->
+            <linearGradient id="flap-r" x1="100%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#e8e0cc" stop-opacity="0.38" />
+              <stop offset="100%" stop-color="#ddd4ba" stop-opacity="0.52" />
+            </linearGradient>
+
+            <!-- Gold gradient fading at corners for crease lines -->
+            <linearGradient id="gold-l" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="rgba(196,165,90,0)" />
+              <stop offset="30%" stop-color="rgba(196,165,90,0.55)" />
+              <stop offset="100%" stop-color="rgba(196,165,90,0.65)" />
+            </linearGradient>
+            <linearGradient id="gold-r" x1="100%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="rgba(196,165,90,0)" />
+              <stop offset="30%" stop-color="rgba(196,165,90,0.55)" />
+              <stop offset="100%" stop-color="rgba(196,165,90,0.65)" />
+            </linearGradient>
+
+            <!-- Border gradients -->
+            <linearGradient id="bdr-h" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="rgba(154,125,58,0)" />
+              <stop offset="10%" stop-color="rgba(154,125,58,0.28)" />
+              <stop offset="90%" stop-color="rgba(154,125,58,0.28)" />
+              <stop offset="100%" stop-color="rgba(154,125,58,0)" />
+            </linearGradient>
+            <linearGradient id="bdr-v" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="rgba(154,125,58,0)" />
+              <stop offset="6%" stop-color="rgba(154,125,58,0.28)" />
+              <stop offset="94%" stop-color="rgba(154,125,58,0.28)" />
+              <stop offset="100%" stop-color="rgba(154,125,58,0)" />
+            </linearGradient>
+          </defs>
+
+          <!-- Left flap triangle: top-left → apex → bottom-left -->
+          <polygon
+            points="0,0 0,150 50,73"
+            fill="url(#flap-l)"
+            filter="url(#flap-shd-l)"
+          />
+
+          <!-- Right flap triangle: top-right → apex → bottom-right -->
+          <polygon
+            points="100,0 100,150 50,73"
+            fill="url(#flap-r)"
+            filter="url(#flap-shd-r)"
+          />
+
+          <!-- Left crease arm: top-left → apex -->
+          <line
+            x1="0"
+            y1="0"
+            x2="50"
+            y2="73"
+            stroke="url(#gold-l)"
+            stroke-width="0.28"
+            filter="url(#crease-shd)"
+          />
+
+          <!-- Right crease arm: top-right → apex -->
+          <line
+            x1="100"
+            y1="0"
+            x2="50"
+            y2="73"
+            stroke="url(#gold-r)"
+            stroke-width="0.28"
+            filter="url(#crease-shd)"
+          />
+
+          <!-- Decorative border — outer -->
+          <line
+            x1="3.5"
+            y1="3.5"
+            x2="96.5"
+            y2="3.5"
+            stroke="url(#bdr-h)"
+            stroke-width="0.22"
+          />
+          <line
+            x1="3.5"
+            y1="146.5"
+            x2="96.5"
+            y2="146.5"
+            stroke="url(#bdr-h)"
+            stroke-width="0.22"
+          />
+          <line
+            x1="3.5"
+            y1="3.5"
+            x2="3.5"
+            y2="146.5"
+            stroke="url(#bdr-v)"
+            stroke-width="0.22"
+          />
+          <line
+            x1="96.5"
+            y1="3.5"
+            x2="96.5"
+            y2="146.5"
+            stroke="url(#bdr-v)"
+            stroke-width="0.22"
+          />
+
+          <!-- Decorative border — inner -->
+          <line
+            x1="5.5"
+            y1="5.5"
+            x2="94.5"
+            y2="5.5"
+            stroke="url(#bdr-h)"
+            stroke-width="0.08"
+          />
+          <line
+            x1="5.5"
+            y1="144.5"
+            x2="94.5"
+            y2="144.5"
+            stroke="url(#bdr-h)"
+            stroke-width="0.08"
+          />
+          <line
+            x1="5.5"
+            y1="5.5"
+            x2="5.5"
+            y2="144.5"
+            stroke="url(#bdr-v)"
+            stroke-width="0.08"
+          />
+          <line
+            x1="94.5"
+            y1="5.5"
+            x2="94.5"
+            y2="144.5"
+            stroke="url(#bdr-v)"
+            stroke-width="0.08"
+          />
+        </svg>
+      </div>
+    </div>
+
+    <div class="export-actions" aria-label="Export options">
+      <button class="png-btn" type="button" onclick="exportPagesAsPng()">
+        Export PNG v7
+      </button>
+      <button class="print-btn" type="button" onclick="window.print()">
+        Export PDF
+      </button>
+    </div>
+
+    <script src="a4-export-assets.js?v=7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script>
+      function scaleToFit() {
+        const sheet = document.querySelector(".sheet");
+        const scale = Math.min(window.innerWidth / sheet.offsetWidth, 1);
+        sheet.style.transform = "scale(" + scale + ")";
+        sheet.style.marginBottom = (scale - 1) * sheet.offsetHeight + "px";
+      }
+
+      function waitForImages(scope) {
+        const images = Array.from(scope.querySelectorAll("img"));
+        return Promise.all(
+          images.map((img) => {
+            if (img.complete) return Promise.resolve();
+            return new Promise((resolve) => {
+              img.addEventListener("load", resolve, { once: true });
+              img.addEventListener("error", resolve, { once: true });
+            });
+          }),
+        );
+      }
+
+      function assetKeyFromUrl(url) {
+        return (url || "").split("/").pop().split("\\").pop();
+      }
+
+      function embedAssetsInDocument(doc) {
+        const assets = window.INVITATION_ASSETS || {};
+
+        doc
+          .querySelectorAll("[data-export-asset-style]")
+          .forEach((style) => style.remove());
+
+        doc.querySelectorAll("img").forEach((img) => {
+          const src = img.getAttribute("src");
+          const key = assetKeyFromUrl(src);
+          if (assets[src]) {
+            img.setAttribute("src", assets[src]);
+          } else if (assets[key]) {
+            img.setAttribute("src", assets[key]);
+          }
+        });
+
+        if (assets["background-image.png"]) {
+          doc.documentElement.style.setProperty(
+            "--panel-texture",
+            `url("${assets["background-image.png"]}")`,
+          );
+
+          const style = doc.createElement("style");
+          style.setAttribute("data-export-asset-style", "");
+          style.textContent = `
+            .panel::after,
+            .details::after {
+              content: none !important;
+              display: none !important;
+              background: none !important;
+              -webkit-mask-image: none !important;
+              mask-image: none !important;
+            }
+            .details > img {
+              display: none !important;
+            }
+            .envelope-back svg *,
+            .envelope-back svg {
+              filter: none !important;
+            }
+            .envelope-back svg {
+              display: none !important;
+            }
+          `;
+          doc.head.appendChild(style);
+        }
+      }
+
+      function applyEmbeddedExportAssets() {
+        const originals = Array.from(document.querySelectorAll("img")).map(
+          (img) => ({
+            img,
+            src: img.getAttribute("src"),
+          }),
+        );
+        const originalTexture =
+          document.documentElement.style.getPropertyValue("--panel-texture");
+
+        embedAssetsInDocument(document);
+
+        return () => {
+          originals.forEach(({ img, src }) => img.setAttribute("src", src));
+          document.documentElement.style.setProperty(
+            "--panel-texture",
+            originalTexture,
+          );
+          document
+            .querySelectorAll("[data-export-asset-style]")
+            .forEach((style) => style.remove());
+        };
+      }
+
+      function canvasToBlob(canvas) {
+        return new Promise((resolve, reject) => {
+          canvas.toBlob((blob) => {
+            if (blob) {
+              resolve(blob);
+            } else {
+              reject(new Error("Chrome could not create the PNG file."));
+            }
+          }, "image/png");
+        });
+      }
+
+      function downloadBlob(blob, filename) {
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.download = filename;
+        link.href = url;
+        link.click();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      }
+
+      const crcTable = (() => {
+        const table = new Uint32Array(256);
+        for (let i = 0; i < 256; i++) {
+          let c = i;
+          for (let k = 0; k < 8; k++) {
+            c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1;
+          }
+          table[i] = c >>> 0;
+        }
+        return table;
+      })();
+
+      function crc32(bytes) {
+        let crc = 0xffffffff;
+        for (const byte of bytes) {
+          crc = crcTable[(crc ^ byte) & 0xff] ^ (crc >>> 8);
+        }
+        return (crc ^ 0xffffffff) >>> 0;
+      }
+
+      function writeUint16(view, offset, value) {
+        view.setUint16(offset, value, true);
+      }
+
+      function writeUint32(view, offset, value) {
+        view.setUint32(offset, value, true);
+      }
+
+      async function createZip(files) {
+        const encoder = new TextEncoder();
+        const now = new Date();
+        const dosTime =
+          (now.getHours() << 11) |
+          (now.getMinutes() << 5) |
+          Math.floor(now.getSeconds() / 2);
+        const dosDate =
+          ((now.getFullYear() - 1980) << 9) |
+          ((now.getMonth() + 1) << 5) |
+          now.getDate();
+        const parts = [];
+        const centralParts = [];
+        let offset = 0;
+
+        for (const file of files) {
+          const nameBytes = encoder.encode(file.name);
+          const bytes = new Uint8Array(await file.blob.arrayBuffer());
+          const checksum = crc32(bytes);
+          const localHeader = new Uint8Array(30 + nameBytes.length);
+          const localView = new DataView(localHeader.buffer);
+
+          writeUint32(localView, 0, 0x04034b50);
+          writeUint16(localView, 4, 20);
+          writeUint16(localView, 6, 0);
+          writeUint16(localView, 8, 0);
+          writeUint16(localView, 10, dosTime);
+          writeUint16(localView, 12, dosDate);
+          writeUint32(localView, 14, checksum);
+          writeUint32(localView, 18, bytes.length);
+          writeUint32(localView, 22, bytes.length);
+          writeUint16(localView, 26, nameBytes.length);
+          writeUint16(localView, 28, 0);
+          localHeader.set(nameBytes, 30);
+
+          const centralHeader = new Uint8Array(46 + nameBytes.length);
+          const centralView = new DataView(centralHeader.buffer);
+          writeUint32(centralView, 0, 0x02014b50);
+          writeUint16(centralView, 4, 20);
+          writeUint16(centralView, 6, 20);
+          writeUint16(centralView, 8, 0);
+          writeUint16(centralView, 10, 0);
+          writeUint16(centralView, 12, dosTime);
+          writeUint16(centralView, 14, dosDate);
+          writeUint32(centralView, 16, checksum);
+          writeUint32(centralView, 20, bytes.length);
+          writeUint32(centralView, 24, bytes.length);
+          writeUint16(centralView, 28, nameBytes.length);
+          writeUint16(centralView, 30, 0);
+          writeUint16(centralView, 32, 0);
+          writeUint16(centralView, 34, 0);
+          writeUint16(centralView, 36, 0);
+          writeUint32(centralView, 38, 0);
+          writeUint32(centralView, 42, offset);
+          centralHeader.set(nameBytes, 46);
+
+          parts.push(localHeader, bytes);
+          centralParts.push(centralHeader);
+          offset += localHeader.length + bytes.length;
+        }
+
+        const centralOffset = offset;
+        const centralSize = centralParts.reduce(
+          (sum, part) => sum + part.length,
+          0,
+        );
+        const endHeader = new Uint8Array(22);
+        const endView = new DataView(endHeader.buffer);
+        writeUint32(endView, 0, 0x06054b50);
+        writeUint16(endView, 4, 0);
+        writeUint16(endView, 6, 0);
+        writeUint16(endView, 8, files.length);
+        writeUint16(endView, 10, files.length);
+        writeUint32(endView, 12, centralSize);
+        writeUint32(endView, 16, centralOffset);
+        writeUint16(endView, 20, 0);
+
+        return new Blob([...parts, ...centralParts, endHeader], {
+          type: "application/zip",
+        });
+      }
+
+      async function exportPagesAsPng() {
+        if (!window.html2canvas) {
+          alert(
+            "PNG export library could not be loaded. Please check your internet connection and try again.",
+          );
+          return;
+        }
+
+        const button = document.querySelector(".png-btn");
+        const sheet = document.querySelector(".sheet");
+        const controls = document.querySelector(".export-actions");
+        const pages = Array.from(
+          document.querySelectorAll(".sheet > .panel, .sheet > .envelope-back"),
+        ).filter((page) => page.offsetWidth > 0 && page.offsetHeight > 0);
+
+        const originalTransform = sheet.style.transform;
+        const originalMarginBottom = sheet.style.marginBottom;
+        const originalControlsDisplay = controls.style.display;
+        let restoreEmbeddedAssets = null;
+
+        button.disabled = true;
+        button.textContent = "Exporting...";
+        sheet.style.transform = "none";
+        sheet.style.marginBottom = "0";
+        controls.style.display = "none";
+
+        try {
+          if (document.fonts) {
+            await document.fonts.ready;
+          }
+          restoreEmbeddedAssets = applyEmbeddedExportAssets();
+          await waitForImages(document);
+
+          const pngFiles = [];
+
+          for (const [index, page] of pages.entries()) {
+            button.textContent = `Page ${index + 1}/${pages.length}`;
+            try {
+              const canvas = await html2canvas(page, {
+                backgroundColor: "#ffffff",
+                scale: 3,
+                useCORS: false,
+                allowTaint: false,
+                imageTimeout: 0,
+                onclone: (clonedDocument) => {
+                  embedAssetsInDocument(clonedDocument);
+                },
+                scrollX: 0,
+                scrollY: 0,
+              });
+              pngFiles.push({
+                name: `wedding-invitation-page-${String(index + 1).padStart(2, "0")}.png`,
+                blob: await canvasToBlob(canvas),
+              });
+            } catch (error) {
+              throw new Error(`Page ${index + 1} failed: ${error.message}`);
+            }
+          }
+
+          button.textContent = "Zipping...";
+          const zip = await createZip(pngFiles);
+          downloadBlob(zip, "wedding-invitation-pages.zip");
+        } catch (error) {
+          console.error(error);
+          alert("Sorry, the PNG export failed: " + error.message);
+        } finally {
+          if (restoreEmbeddedAssets) {
+            restoreEmbeddedAssets();
+          }
+          sheet.style.transform = originalTransform;
+          sheet.style.marginBottom = originalMarginBottom;
+          controls.style.display = originalControlsDisplay;
+          button.disabled = false;
+          button.textContent = "Export PNG v7";
+          scaleToFit();
+        }
+      }
+
+      function renderSinglePageForScreenshot() {
+        const params = new URLSearchParams(window.location.search);
+        const pageNumber = Number(params.get("renderPage"));
+        if (!pageNumber) return false;
+
+        const pages = Array.from(
+          document.querySelectorAll(".sheet > .panel, .sheet > .envelope-back"),
+        );
+        const page = pages[pageNumber - 1];
+        if (!page) return false;
+
+        document.body.style.padding = "0";
+        document.body.style.gap = "0";
+        document.body.style.background = "#ffffff";
+        document.querySelector(".export-actions").style.display = "none";
+        document.querySelector(".envelope-back-wrapper").style.display = "none";
+        pages.forEach((item) => {
+          item.style.display = item === page ? "" : "none";
+          item.style.breakAfter = "auto";
+          item.style.pageBreakAfter = "auto";
+        });
+
+        const sheet = document.querySelector(".sheet");
+        sheet.style.transform = "none";
+        sheet.style.marginBottom = "0";
+        sheet.style.gap = "0";
+        return true;
+      }
+
+      if (!renderSinglePageForScreenshot()) {
+        scaleToFit();
+        window.addEventListener("resize", scaleToFit);
+      }
+    </script>
+  </body>
+</html>
