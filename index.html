@@ -66,6 +66,7 @@
         border-bottom: none;
         background: var(--beige);
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
       }
@@ -144,6 +145,45 @@
         color: var(--gold);
       }
 
+      .arrum-scroll-hint {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        margin-top: 18px;
+        font-family: "Cormorant Garamond", serif;
+        font-weight: bold;
+        font-size: 30px; 
+        color: var(--gold);
+        opacity: 0.7;
+      }
+
+      .arrum-scroll-arrow {
+        width: 2px;
+        height: 24px;
+        background: linear-gradient(to bottom, var(--gold), transparent);
+        position: relative;
+        animation: scrollBounce 1.8s ease-in-out infinite;
+      }
+
+      .arrum-scroll-arrow::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 7px solid var(--gold);
+      }
+
+      @keyframes scrollBounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(6px); }
+      }
+
       /* ═══════════════════════════════
          GATE SCREEN
       ═══════════════════════════════ */
@@ -184,9 +224,21 @@
         pointer-events: none;
       }
       .enter-names {
-        font-family: "Great Vibes", cursive;
-        font-size: clamp(32px, 10vw, 52px);
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(22px, 7vw, 32px);
+        font-style: italic;
         color: var(--text);
+        text-align: center;
+        line-height: 1.4;
+      }
+
+      .enter-guest-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(26px, 8vw, 40px);
+        font-weight: 600;
+        font-style: italic;
+        color: var(--gold);
+        line-height: 1.4;
       }
       .enter-btn {
         margin-top: 28px;
@@ -225,6 +277,88 @@
       }
       .enter-loader.hidden {
         opacity: 0;
+      }
+
+      .enter-envelope-wrap {
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 12px;
+        perspective: 1200px;
+      }
+      .enter-envelope {
+        width: clamp(120px, 40vw, 160px);
+        height: clamp(80px, 27vw, 107px);
+        position: relative;
+        transform-style: preserve-3d;
+      }
+      .enter-envelope-wrap:not(.open):active .enter-envelope {
+        transform: scale(0.96);
+      }
+      .enter-envelope .env-body {
+        border-radius: 4px;
+        width: 100%;
+        height: 100%;
+      }
+      .enter-envelope .env-side-left {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        border: none;
+        border-right: clamp(60px, 20vw, 80px) solid rgba(30, 50, 30, 0.4);
+        border-top: clamp(27px, 9vw, 40px) solid transparent;
+        border-bottom: clamp(27px, 9vw, 40px) solid transparent;
+        z-index: 2;
+        pointer-events: none;
+      }
+      .enter-envelope .env-side-right {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        border: none;
+        border-left: clamp(60px, 20vw, 80px) solid rgba(30, 50, 30, 0.4);
+        border-top: clamp(27px, 9vw, 40px) solid transparent;
+        border-bottom: clamp(27px, 9vw, 40px) solid transparent;
+        z-index: 2;
+        pointer-events: none;
+      }
+      .enter-envelope .env-shadow {
+        display: none;
+      }
+      .enter-envelope .env-flap {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 0;
+        border-left: clamp(60px, 20vw, 80px) solid transparent;
+        border-right: clamp(60px, 20vw, 80px) solid transparent;
+        border-top: clamp(44px, 13.5vw, 54px) solid #2a4228;
+        transform-origin: top center;
+        transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 3;
+        filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+      }
+      .enter-envelope-wrap.open .env-flap {
+        transform: rotateX(180deg);
+      }
+      .enter-envelope .env-seal {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: clamp(30px, 10vw, 40px);
+        z-index: 5;
+        pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+      .enter-envelope-wrap.open .env-seal {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
       }
 
       /* Gate — all elements use identical img sizing for perfect alignment */
@@ -2073,6 +2207,118 @@
         background: rgba(10, 6, 2, 0.88);
       }
 
+      /* ── Inline invitation section ── */
+      .invite-inline {
+        padding: 72px 28px 48px;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(36px);
+        transition: opacity 0.9s ease, transform 0.9s ease;
+      }
+      .invite-inline.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .invite-card {
+        background: var(--beige-light);
+        border: 1.5px solid var(--gold-light);
+        border-radius: 8px;
+        padding: 44px 32px 36px;
+        max-width: 520px;
+        margin: 0 auto;
+        position: relative;
+        box-shadow: 0 12px 40px rgba(80, 50, 10, 0.12);
+      }
+      .invite-card::before {
+        content: "";
+        position: absolute;
+        inset: 12px;
+        border: 1px solid rgba(139, 105, 20, 0.18);
+        border-radius: 2px;
+        pointer-events: none;
+      }
+
+      /* ── Inline RSVP ── */
+      .rsvp-inline {
+        margin-top: 32px;
+        padding-top: 28px;
+        border-top: 1px solid rgba(139, 105, 20, 0.2);
+      }
+      .rsvp-inline-label {
+        font-family: "Cinzel", serif;
+        font-size: 13.1px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 16px;
+      }
+      .rsvp-inline-btns {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .rsvp-choice-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 20px;
+        font-family: "Cinzel", serif;
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.25s, color 0.25s, border-color 0.25s;
+        border: 1.5px solid;
+      }
+      .rsvp-choice-yes {
+        color: var(--green-dark);
+        border-color: rgba(58, 92, 58, 0.5);
+        background: rgba(58, 92, 58, 0.06);
+      }
+      .rsvp-choice-yes:hover,
+      .rsvp-choice-yes.active {
+        background: var(--green-dark);
+        color: var(--beige-light);
+        border-color: var(--green-dark);
+      }
+      .rsvp-choice-no {
+        color: var(--maroon);
+        border-color: rgba(107, 39, 55, 0.5);
+        background: rgba(107, 39, 55, 0.06);
+      }
+      .rsvp-choice-no:hover,
+      .rsvp-choice-no.active {
+        background: var(--maroon);
+        color: var(--beige-light);
+        border-color: var(--maroon);
+      }
+      .rsvp-status {
+        margin-top: 12px;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 14px;
+        font-style: italic;
+        color: var(--text);
+        min-height: 20px;
+      }
+      .rsvp-notes-wrap {
+        margin-top: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+      }
+      .rsvp-notes-input {
+        width: 100%;
+        max-width: 320px;
+        text-align: center;
+      }
+      .rsvp-send-btn {
+        font-size: 10px;
+        padding: 8px 24px;
+      }
+
       .card-wrap {
         position: fixed;
         inset: 0;
@@ -2590,9 +2836,39 @@
     <!-- Enter screen -->
     <div id="enter-screen">
       <div class="enter-names">
-        Erina <span style="color: #8b6914">&</span> Farhan
+        Kepada<br />
+        <span class="enter-guest-name" id="enterGuestName">Invited Names</span>
       </div>
+
+      <!-- Envelope -->
+      <div class="enter-envelope-wrap" id="enterEnvelopeWrap">
+        <div class="env-ribbon">
+          <svg viewBox="0 0 110 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M55 20 C40 5 10 2 8 14 C6 24 30 28 55 20Z" fill="#c4a44a" opacity="0.55"/>
+            <path d="M55 20 C40 5 10 2 8 14 C6 24 30 28 55 20Z" stroke="#8b6914" stroke-width="0.8" fill="none"/>
+            <path d="M55 20 C70 5 100 2 102 14 C104 24 80 28 55 20Z" fill="#c4a44a" opacity="0.55"/>
+            <path d="M55 20 C70 5 100 2 102 14 C104 24 80 28 55 20Z" stroke="#8b6914" stroke-width="0.8" fill="none"/>
+            <path d="M55 20 L38 38" stroke="#8b6914" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M55 20 L72 38" stroke="#8b6914" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="55" cy="20" r="4" fill="#c4a44a" opacity="0.9"/>
+            <circle cx="55" cy="20" r="4" stroke="#8b6914" stroke-width="0.8" fill="none"/>
+          </svg>
+        </div>
+        <div class="enter-envelope">
+          <div class="env-body"></div>
+          <div class="env-side-left"></div>
+          <div class="env-side-right"></div>
+          <div class="env-flap"></div>
+          <img class="env-seal" src="wax-seal.png" alt="" />
+        </div>
+        <div class="envelope-shadow"></div>
+      </div>
+
       <button class="enter-btn" id="enter-btn" onclick="enterSite()" disabled>
+        <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 6px; vertical-align: middle;">
+          <rect x="0.5" y="0.5" width="13" height="11" rx="1.5" stroke="currentColor" stroke-width="1"/>
+          <path d="M1 3.5L6.5 7.5L12 3.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
         Buka Undangan
       </button>
       <div class="enter-loader" id="enter-loader">
@@ -2632,12 +2908,17 @@
           </div>
           <div class="arrum-divider"></div>
           <p class="arrum-translation">
-            "And among His signs is that He created for you spouses from among
-            yourselves so that you may find tranquility in them, and He placed
-            between you affection and mercy. Surely in this are signs for people
-            who reflect."
+            "Dan di antara tanda-tanda (kebesaran-Nya) ialah Dia menciptakan untukmu
+            pasangan dari jenismu sendiri, supaya kamu merasa tenteram kepadanya,
+            dan dijadikan-Nya di antaramu mawaddah dan rahmah. Sesungguhnya pada
+            yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah)
+            bagi kaum yang berpikir."
           </p>
           <div class="arrum-source">QS. Ar-Rum : 21</div>
+        </div>
+        <div class="arrum-scroll-hint">
+          <span>Scroll</span>
+          <div class="arrum-scroll-arrow"></div>
         </div>
       </section>
 
@@ -2742,15 +3023,11 @@
         <div class="landscape-text">
           <div class="landscape-eyebrow">Ngunduh Mantu</div>
           <div class="landscape-names">
-            Erina
-            <span class="amp">&amp;</span>
             Farhan
+            <span class="amp">&amp;</span>
+            Erina
           </div>
           <div class="landscape-date">Minggu · 9 Agustus 2026</div>
-        </div>
-        <div class="landscape-scroll">
-          <span>Scroll to read</span>
-          <div class="scroll-arrow"></div>
         </div>
       </section>
 
@@ -3030,103 +3307,81 @@
           </div>
         </section>
 
-        <!-- Envelope -->
-        <section class="envelope-section" id="envelopeSection">
-          <div class="envelope-section-label">Anda Diundang</div>
-          <p class="envelope-section-intro">
-            Undangan spesial menunggu Anda.<br />
-            Buka untuk hadir bersama kami.
-          </p>
-          <div class="envelope-wrap" id="envelopeWrap" onclick="openEnvelope()">
-            <!-- Ribbon bow on top -->
-            <div class="env-ribbon">
-              <svg
-                viewBox="0 0 110 40"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+        <!-- Invitation inline section -->
+        <section class="invite-inline" id="inviteInline">
+          <div class="invite-card">
+            <div class="together">Bersama keluarga tercinta</div>
+            <p class="invite-text">
+              dengan penuh kebahagiaan mengundang<br /><strong id="guest-name-card"></strong><br />di acara Ngunduh Mantu
+            </p>
+            <div class="couple-names">
+              Muhammad Farhan Binashrillah
+              <span class="amp">&amp;</span>
+              Erina Khalisah Nurindriyani
+            </div>
+
+            <div class="invite-divider">
+              <span></span><span class="divider-icon">❧</span><span></span>
+            </div>
+            <p class="invite-text">
+              Mari bersama merayakan cinta,<br />kebahagiaan, dan awal baru<br />dalam hidup berdua.
+            </p>
+            <div class="date-block">
+              <div class="date-label">Ngunduh Mantu</div>
+              <div class="date-main">Minggu, 9 Agustus 2026</div>
+              <div class="date-time">Pagi · 10:30 WIB</div>
+            </div>
+            <div class="venue-block">
+              <div class="venue-name">Lestari Restaurant</div>
+              <div class="venue-address">Kota Jember, Jawa Timur</div>
+              <a
+                class="map-btn"
+                href="https://www.google.com/maps/search/?api=1&query=Lestari+Restaurant+Jember"
+                target="_blank"
+                rel="noopener"
               >
-                <!-- left bow loop -->
-                <path
-                  d="M55 20 C40 5 10 2 8 14 C6 24 30 28 55 20Z"
-                  fill="#c4a44a"
-                  opacity="0.55"
-                />
-                <path
-                  d="M55 20 C40 5 10 2 8 14 C6 24 30 28 55 20Z"
-                  stroke="#8b6914"
-                  stroke-width="0.8"
-                  fill="none"
-                />
-                <!-- right bow loop -->
-                <path
-                  d="M55 20 C70 5 100 2 102 14 C104 24 80 28 55 20Z"
-                  fill="#c4a44a"
-                  opacity="0.55"
-                />
-                <path
-                  d="M55 20 C70 5 100 2 102 14 C104 24 80 28 55 20Z"
-                  stroke="#8b6914"
-                  stroke-width="0.8"
-                  fill="none"
-                />
-                <!-- left tail -->
-                <path
-                  d="M55 20 L38 38"
-                  stroke="#8b6914"
-                  stroke-width="1.2"
-                  stroke-linecap="round"
-                />
-                <!-- right tail -->
-                <path
-                  d="M55 20 L72 38"
-                  stroke="#8b6914"
-                  stroke-width="1.2"
-                  stroke-linecap="round"
-                />
-                <!-- knot -->
-                <circle cx="55" cy="20" r="4" fill="#c4a44a" opacity="0.9" />
-                <circle
-                  cx="55"
-                  cy="20"
-                  r="4"
-                  stroke="#8b6914"
-                  stroke-width="0.8"
-                  fill="none"
-                />
-              </svg>
+                <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor">
+                  <path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5a.5.5 0 0 0 .5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5a.5.5 0 0 0-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/>
+                </svg>
+                Lihat di Peta
+              </a>
             </div>
-            <div class="envelope">
-              <div class="env-body"></div>
-              <div class="env-side-left"></div>
-              <div class="env-side-right"></div>
-              <div class="env-flap"></div>
-              <img class="env-seal" src="wax-seal.png" alt="" />
+
+            <!-- RSVP Yes/No -->
+            <div class="rsvp-inline">
+              <div class="rsvp-inline-label">Konfirmasi Kehadiran</div>
+              <div class="rsvp-inline-btns">
+                <button class="rsvp-choice-btn rsvp-choice-yes" id="rsvpYes" onclick="setRsvp(true)">
+                  <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor" style="margin-right: 5px; vertical-align: middle;">
+                    <path d="M16.707 5.293a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 1.414-1.414L8 12.586l7.293-7.293a1 1 0 0 1 1.414 0z"/>
+                  </svg>
+                  Ya, saya hadir
+                </button>
+                <button class="rsvp-choice-btn rsvp-choice-no" id="rsvpNo" onclick="setRsvp(false)">
+                  <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor" style="margin-right: 5px; vertical-align: middle;">
+                    <path d="M4.293 4.293a1 1 0 0 1 1.414 0L10 8.586l4.293-4.293a1 1 0 1 1 1.414 1.414L11.414 10l4.293 4.293a1 1 0 0 1-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 0 1-1.414-1.414L8.586 10 4.293 5.707a1 1 0 0 1 0-1.414z"/>
+                  </svg>
+                  Maaf, tidak bisa
+                </button>
+              </div>
+              <div class="rsvp-status" id="rsvpStatus"></div>
+              <div class="rsvp-notes-wrap" id="rsvpNotesWrap" style="display:none;">
+                <textarea
+                  class="rsvp-input rsvp-notes-input"
+                  id="rsvpNotes"
+                  rows="2"
+                  placeholder="Pesan atau ucapan untuk pengantin..."
+                ></textarea>
+                <button class="rsvp-btn rsvp-send-btn" onclick="sendRsvpNotes()">Kirim</button>
+              </div>
             </div>
-            <div class="envelope-shadow"></div>
           </div>
-          <div class="env-tap-hint">Ketuk untuk buka</div>
         </section>
         <div style="position: relative; height: 220px; flex-shrink: 0">
-          <img
-            class="screen-leaf screen-leaf-bl1"
-            src="left-bottom-leaf-bottom.png"
-            alt=""
-          />
-          <img
-            class="screen-leaf screen-leaf-bl1 screen-leaf-bl1-top"
-            src="left-bottom-leaf-top.png"
-            alt=""
-          />
-          <img
-            class="screen-leaf screen-leaf-br1"
-            src="right-bottom-leaf-bottom.png"
-            alt=""
-          />
-          <img
-            class="screen-leaf screen-leaf-br1 screen-leaf-br1-top"
-            src="right-bottom-leaf-top.png"
-            alt=""
-          />
+          <img class="screen-leaf screen-leaf-bl1" src="left-bottom-leaf-bottom.png" alt="" />
+          <img class="screen-leaf screen-leaf-bl1 screen-leaf-bl1-top" src="left-bottom-leaf-top.png" alt="" />
+          <img class="screen-leaf screen-leaf-br1" src="right-bottom-leaf-bottom.png" alt="" />
+          <img class="screen-leaf screen-leaf-br1 screen-leaf-br1-top" src="right-bottom-leaf-top.png" alt="" />
           <img class="screen-leaf-mid" src="middle-bottom-leaf.png" alt="" />
         </div>
       </div>
@@ -3139,21 +3394,10 @@
         <div class="rsvp-modal-title">Apakah Anda bisa hadir?</div>
         <form class="rsvp-form" id="rsvpForm" onsubmit="submitRsvp(event)">
           <div class="rsvp-radios">
-            <label
-              ><input type="radio" name="attending" value="true" required />
-              Ya, saya hadir</label
-            >
-            <label
-              ><input type="radio" name="attending" value="false" /> Maaf,
-              tidak bisa</label
-            >
+            <label><input type="radio" name="attending" value="true" required />Ya, saya hadir</label>
+            <label><input type="radio" name="attending" value="false" />Maaf, tidak bisa</label>
           </div>
-          <textarea
-            name="message"
-            class="rsvp-input"
-            rows="2"
-            placeholder="Pesan untuk pengantin (opsional)"
-          ></textarea>
+          <textarea name="message" class="rsvp-input" rows="2" placeholder="Pesan untuk pengantin (opsional)"></textarea>
           <button type="submit" class="rsvp-btn">Kirim RSVP</button>
           <div class="rsvp-thanks" id="rsvpThanks">
             <div class="thanks-mark">❧</div>
@@ -3165,80 +3409,7 @@
       </div>
     </div>
 
-    <!-- Card overlay -->
-    <div class="card-wrap" id="cardWrap">
-      <div class="card">
-        <div class="card-inner">
-          <div class="together">Bersama keluarga tercinta</div>
-          <p class="invite-text">
-            dengan penuh kebahagiaan mengundang<br /><strong id="guest-name-card"></strong><br />di acara Ngunduh Mantu
-          </p>
-          <div class="couple-names">
-            Erina Khalisah Nurindriyani
-            <span class="amp">&amp;</span>
-            Muhammad Farhan Binashrillah
-          </div>
-
-          <!-- Parents -->
-          <!-- <div class="parents-block">
-            <div class="parents-side">
-              <div class="parents-label">Putri dari</div>
-              <div class="parents-name">Bapak [Nama Ayah Erina]</div>
-              <div class="parents-name">&amp; Ibu [Nama Ibu Erina]</div>
-            </div>
-            <div class="parents-divider">
-              <span></span><span class="divider-icon">❧</span><span></span>
-            </div>
-            <div class="parents-side">
-              <div class="parents-label">Putra dari</div>
-              <div class="parents-name">Bapak [Nama Ayah Farhan]</div>
-              <div class="parents-name">&amp; Ibu [Nama Ibu Farhan]</div>
-            </div>
-          </div> -->
-
-          <div class="invite-divider">
-            <span></span><span class="divider-icon">❧</span><span></span>
-          </div>
-          <p class="invite-text">
-            Mari bersama merayakan cinta,<br />kebahagiaan, dan awal baru<br />dalam hidup berdua.
-          </p>
-          <div class="date-block">
-            <div class="date-label">Ngunduh Mantu</div>
-            <div class="date-main">Minggu, 9 Agustus 2026</div>
-            <div class="date-time">Pagi · 10:30 WIB</div>
-          </div>
-          <div class="venue-block">
-            <div class="venue-name">Lestari Restaurant</div>
-            <div class="venue-address">Kota Jember, Jawa Timur</div>
-            <a
-              class="map-btn"
-              href="https://www.google.com/maps/search/?api=1&query=Lestari+Restaurant+Jember"
-              target="_blank"
-              rel="noopener"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                width="11"
-                height="11"
-                fill="currentColor"
-              >
-                <path
-                  d="M12 2C8 2 5 5 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-4-3-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"
-                />
-              </svg>
-              Lihat di Peta
-            </a>
-          </div>
-          <div class="footer-text">Dengan segala cinta</div>
-          <button type="button" class="rsvp-btn" onclick="openRsvp()">
-            Konfirmasi Kehadiran
-          </button>
-        </div>
-      </div>
-    </div>
-
     <script>
-      let opened = false;
       const LEAF_COLORS = [
         "#bfd69b",
         "#a8c880",
@@ -3284,7 +3455,7 @@
 
       function initScrollReveal() {
         const targets = document.querySelectorAll(
-          ".story-section, .envelope-section",
+          ".story-section, #inviteInline",
         );
         const io = new IntersectionObserver(
           (entries) => {
@@ -3300,7 +3471,6 @@
       function initProgressBar() {
         const bar = document.getElementById("progress-bar");
         const screen = document.getElementById("story-screen");
-        const envSection = document.getElementById("envelopeSection");
         screen.addEventListener(
           "scroll",
           () => {
@@ -3318,18 +3488,8 @@
         setTimeout(() => gate.classList.add("gone"), 600);
       }
 
-      function revealLandscape() {
-        const story = document.getElementById("story-screen");
-        story.classList.add("visible");
-        setTimeout(() => {
-          spawnFallingLeaves();
-          initScrollReveal();
-          initProgressBar();
-        }, 800);
-      }
-
       function burstLeavesFromEnvelope() {
-        const env = document.getElementById("envelopeWrap");
+        const env = document.getElementById("enterEnvelopeWrap");
         const rect = env.getBoundingClientRect();
         const cx = rect.left + rect.width / 2;
         const cy = rect.top + rect.height / 3;
@@ -3353,28 +3513,45 @@
         }
       }
 
-      function openEnvelope() {
-        if (opened) return;
-        opened = true;
-        const env = document.getElementById("envelopeWrap");
-        const cardWrap = document.getElementById("cardWrap");
-        const backdrop = document.getElementById("backdrop");
-        env.classList.add("open");
-        backdrop.classList.add("active");
-        setTimeout(() => burstLeavesFromEnvelope(), 200);
-        setTimeout(() => cardWrap.classList.add("revealed"), 700);
+      let rsvpChoice = null;
+
+      function setRsvp(attending) {
+        rsvpChoice = attending;
+        const yesBtn = document.getElementById("rsvpYes");
+        const noBtn = document.getElementById("rsvpNo");
+        const status = document.getElementById("rsvpStatus");
+        const notesWrap = document.getElementById("rsvpNotesWrap");
+        yesBtn.classList.toggle("active", attending === true);
+        noBtn.classList.toggle("active", attending === false);
+        if (attending === true) {
+          status.textContent = "Senang mendengar kabar baik ini! ✦";
+          status.style.color = "var(--green-dark)";
+        } else {
+          status.textContent = "Sampai jumpa lain waktu ✦";
+          status.style.color = "var(--maroon)";
+        }
+        notesWrap.style.display = "flex";
+        localStorage.setItem("rsvpChoice", attending);
       }
 
-      function closeCard() {
-        const env = document.getElementById("envelopeWrap");
-        const cardWrap = document.getElementById("cardWrap");
-        const backdrop = document.getElementById("backdrop");
-        cardWrap.classList.remove("revealed");
-        setTimeout(() => {
-          backdrop.classList.remove("active");
-          env.classList.remove("open");
-          opened = false;
-        }, 480);
+      function sendRsvpNotes() {
+        const notes = document.getElementById("rsvpNotes").value;
+        const guestName = new URLSearchParams(window.location.search).get("to") || "Tamu Undangan";
+        if (rsvpChoice === null) return;
+        const status = document.getElementById("rsvpStatus");
+        status.textContent = "Terima kasih atas konfirmasinya! ✦";
+        status.style.color = "var(--gold)";
+        const notesWrap = document.getElementById("rsvpNotesWrap");
+        notesWrap.style.display = "none";
+        if (supabase) {
+          supabase.from("guests").upsert({
+            name: guestName,
+            attending: rsvpChoice,
+            message: notes || "",
+          }, { onConflict: "name" }).then(({ error }) => {
+            if (error) console.error("Supabase error:", error);
+          });
+        }
       }
 
       // ── Countdown to 9 August 2026, 10:30 AM WIB (UTC+7) ──
@@ -3552,11 +3729,34 @@
       function enterSite() {
         const enter = document.getElementById("enter-screen");
         const gate = document.getElementById("gate-screen");
+
+        // Step 1: fade out enter screen
         enter.classList.add("fade-out");
         startMusic();
-        setTimeout(() => gate.classList.add("zoom-in"), 400);
-        setTimeout(openGate, 1600);
-        setTimeout(revealLandscape, 3200);
+
+        // Step 2: open envelope
+        const envWrap = document.getElementById("enterEnvelopeWrap");
+        envWrap.classList.add("open");
+        burstLeavesFromEnvelope();
+
+        // Step 3: zoom in gate (after envelope opens ~1s)
+        setTimeout(() => {
+          gate.classList.add("zoom-in");
+        }, 1100);
+
+        // Step 4: open gate doors (after zoom-in settles ~1.2s)
+        setTimeout(() => {
+          openGate();
+        }, 2300);
+
+        // Step 5: reveal story (after doors open ~1.2s)
+        setTimeout(() => {
+          const story = document.getElementById("story-screen");
+          story.classList.add("visible");
+          spawnFallingLeaves();
+          initScrollReveal();
+          initProgressBar();
+        }, 3500);
       }
 
       // Preload all images, enable button when done
@@ -3566,6 +3766,8 @@
         if (guestName) {
           const el = document.getElementById("guest-name-card");
           if (el) el.textContent = guestName.replace(/\+/g, " ");
+          const enterEl = document.getElementById("enterGuestName");
+          if (enterEl) enterEl.textContent = guestName.replace(/\+/g, " ");
         }
         const images = [
           "gate-frame.png",
