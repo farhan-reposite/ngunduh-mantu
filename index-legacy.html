@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,16 +8,25 @@
     />
     <title>Farhan & Erina – Cerita Kami</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Lateef:wght@200;300;400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cinzel:wght@400;500;600;700&family=Great+Vibes&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Great+Vibes&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
     <script>
-      const SUPABASE_URL = 'https://svtbjhadjlyhhproqjny.supabase.co';
-      const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN2dGJqaGFkamx5aGhwcm9xam55Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUyNjYxNjYsImV4cCI6MjEwMDg0MjE2Nn0.AbMqO2eSfQHydmIJllQXbWBQoPEihtsQvdOMzupL25A';
+      const SUPABASE_URL = "https://svtbjhadjlyhhproqjny.supabase.co";
+      const SUPABASE_ANON_KEY =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN2dGJqaGFkamx5aGhwcm9xam55Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUyNjYxNjYsImV4cCI6MjEwMDg0MjE2Nn0.AbMqO2eSfQHydmIJllQXbWBQoPEihtsQvdOMzupL25A";
       let supabase = null;
-      if (SUPABASE_URL && SUPABASE_URL !== 'https://svtbjhadjlyhhproqjny.supabase.co' && SUPABASE_ANON_KEY !== 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN2dGJqaGFkamx5aGhwcm9xam55Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUyNjYxNjYsImV4cCI6MjEwMDg0MjE2Nn0.AbMqO2eSfQHydmIJllQXbWBQoPEihtsQvdOMzupL25A') {
-        supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      if (
+        SUPABASE_URL &&
+        SUPABASE_URL !== "https://svtbjhadjlyhhproqjny.supabase.co" &&
+        SUPABASE_ANON_KEY !==
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN2dGJqaGFkamx5aGhwcm9xam55Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUyNjYxNjYsImV4cCI6MjEwMDg0MjE2Nn0.AbMqO2eSfQHydmIJllQXbWBQoPEihtsQvdOMzupL25A"
+      ) {
+        supabase = window.supabase.createClient(
+          SUPABASE_URL,
+          SUPABASE_ANON_KEY,
+        );
       }
     </script>
 
@@ -153,7 +162,7 @@
         margin-top: 18px;
         font-family: "Cormorant Garamond", serif;
         font-weight: bold;
-        font-size: 20px; 
+        font-size: 20px;
         color: var(--gold);
         opacity: 0.7;
       }
@@ -180,8 +189,13 @@
       }
 
       @keyframes scrollBounce {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(6px); }
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(6px);
+        }
       }
 
       /* ═══════════════════════════════
@@ -211,9 +225,7 @@
         position: fixed;
         inset: 0;
         z-index: 400;
-        background: 
-          linear-gradient(rgba(250, 247, 242, 0.5), rgba(250, 247, 242, 0.5)),
-          url("bg_awal.jpeg") center/cover no-repeat;
+        background: var(--beige-light);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -245,8 +257,8 @@
       .enter-btn {
         margin-top: 28px;
         font-family: "Cinzel", serif;
-        font-size: 15.5px;
-        font-weight: 700;
+        font-size: 14.5px;
+        font-weight: 600;
         letter-spacing: 0.45em;
         text-transform: uppercase;
         color: #5a3a0a;
@@ -282,14 +294,80 @@
       }
 
       .enter-envelope-wrap {
-        cursor: pointer;
-        -webkit-tap-highlight-color: transparent;
-        display: flex;
+        display: none;
+      }
+
+      .enter-header {
+        text-align: center;
+        margin-bottom: 12px;
+      }
+
+      .enter-header-eyebrow {
+        font-family: "Cinzel", serif;
+        font-size: 11px;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 4px;
+      }
+
+      .enter-header-names {
+        font-family: "Great Vibes", cursive;
+        font-size: clamp(24px, 7vw, 36px);
+        color: var(--text);
+      }
+
+      .enter-landscape-img {
+        width: 80%;
+        max-width: 320px;
+        margin: 0 auto 16px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 8px 24px rgba(60, 40, 10, 0.15);
+      }
+
+      .enter-landscape-img img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .enter-prewed {
+        width: 80%;
+        max-width: 300px;
+        margin: 0 auto 16px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 8px 24px rgba(60, 40, 10, 0.15);
+      }
+
+      .enter-prewed img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .enter-prewed-placeholder {
+        display: none;
         flex-direction: column;
         align-items: center;
-        margin-bottom: 12px;
-        perspective: 1200px;
+        justify-content: center;
+        gap: 8px;
+        padding: 24px;
+        background: rgba(139, 105, 20, 0.08);
+        color: rgba(139, 105, 20, 0.35);
+        font-family: "Cinzel", serif;
+        font-size: 8px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
       }
+
+      .enter-prewed-placeholder svg {
+        width: 32px;
+        height: 32px;
+        opacity: 0.4;
+      }
+
       .enter-envelope {
         width: clamp(120px, 40vw, 160px);
         height: clamp(80px, 27vw, 107px);
@@ -356,7 +434,9 @@
         width: clamp(30px, 10vw, 40px);
         z-index: 5;
         pointer-events: none;
-        transition: opacity 0.3s ease, transform 0.3s ease;
+        transition:
+          opacity 0.3s ease,
+          transform 0.3s ease;
       }
       .enter-envelope-wrap.open .env-seal {
         opacity: 0;
@@ -2215,7 +2295,9 @@
         text-align: center;
         opacity: 0;
         transform: translateY(36px);
-        transition: opacity 0.9s ease, transform 0.9s ease;
+        transition:
+          opacity 0.9s ease,
+          transform 0.9s ease;
       }
       .invite-inline.visible {
         opacity: 1;
@@ -2248,8 +2330,7 @@
       }
       .rsvp-inline-label {
         font-family: "Cinzel", serif;
-        font-size: 14px;
-        font-weight: 600;
+        font-size: 13.1px;
         letter-spacing: 0.3em;
         text-transform: uppercase;
         color: var(--gold);
@@ -2267,13 +2348,15 @@
         justify-content: center;
         padding: 10px 20px;
         font-family: "Cinzel", serif;
-        font-size: 12px;
-        font-weight: 600;
+        font-size: 10px;
         letter-spacing: 0.2em;
         text-transform: uppercase;
         border-radius: 4px;
         cursor: pointer;
-        transition: background 0.25s, color 0.25s, border-color 0.25s;
+        transition:
+          background 0.25s,
+          color 0.25s,
+          border-color 0.25s;
         border: 1.5px solid;
       }
       .rsvp-choice-yes {
@@ -2379,18 +2462,18 @@
       }
 
       .together {
-        font-family: "Great Vibes", cursive;
+        font-family: "Cinzel", serif;
         font-weight: 400;
-        letter-spacing: 0.02em;
-        font-size: clamp(20px, 1vw, 34px);
+        letter-spacing: 0.3em;
+        font-size: 13.8px;
+        text-transform: uppercase;
         color: var(--gold);
-        margin-bottom: 8px;
-        line-height: 1.2;
+        margin-bottom: 10px;
       }
 
       .invite-text {
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 15px;
+        font-weight: 400;
         color: var(--text);
         line-height: 1.85;
         font-style: italic;
@@ -2399,7 +2482,7 @@
 
       .couple-names {
         font-family: "Great Vibes", cursive;
-        font-size: clamp(30px, 8.5vw, 38px);
+        font-size: clamp(26px, 7.5vw, 32px);
         color: var(--gold);
         line-height: 1.15;
         margin: 12px 0;
@@ -2478,24 +2561,22 @@
       }
       .date-label {
         font-family: "Cinzel", serif;
-        font-size: 14px;
-        font-weight: 600;
+        font-size: 13.1px;
         letter-spacing: 0.35em;
         text-transform: uppercase;
         color: var(--gold);
         margin-bottom: 5px;
       }
       .date-main {
-        font-size: clamp(16px, 4.5vw, 20px);
+        font-size: clamp(18px, 5vw, 22px);
         color: var(--text);
         letter-spacing: 0.08em;
-        font-weight: 600;
-        font-variant-numeric: lining-nums;
+        font-weight: 400;
       }
       .date-time {
         font-family: "Cinzel", serif;
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 15.3px;
+        font-weight: 400;
         letter-spacing: 0.18em;
         color: var(--gold);
         margin-top: 5px;
@@ -2505,16 +2586,15 @@
         margin-top: 16px;
       }
       .venue-name {
-        font-size: clamp(16px, 4.5vw, 20px);
-        font-weight: 600;
+        font-size: 18px;
         color: var(--text);
         letter-spacing: 0.06em;
         margin-bottom: 3px;
       }
       .venue-address {
         font-family: "Cinzel", serif;
-        font-size: 14.5px;
-        font-weight: 600;
+        font-size: 13.8px;
+        font-weight: 400;
         letter-spacing: 0.22em;
         color: var(--gold);
         text-transform: uppercase;
@@ -2553,9 +2633,8 @@
         margin-top: 10px;
         padding: 6px 14px;
         font-family: "Cinzel", serif;
-        font-size: 14px;
-        font-weight: 600;
-        letter-spacing: 0.25em;
+        font-size: 13.1px;
+        letter-spacing: 0.28em;
         text-transform: uppercase;
         color: var(--green-mid);
         text-decoration: none;
@@ -2843,6 +2922,39 @@
   <body>
     <!-- Enter screen -->
     <div id="enter-screen">
+      <!-- Ngunduh Mantu + Names header -->
+      <div class="enter-header">
+        <div class="enter-header-eyebrow">Ngunduh Mantu</div>
+        <div class="enter-header-names">
+          Farhan <span style="color: #c4a44a">&amp;</span> Erina
+        </div>
+      </div>
+
+      <!-- Prewedding photo -->
+      <div class="enter-prewed">
+        <img
+          src="prewed.jpg"
+          alt="Prewedding photo"
+          onerror="
+            this.style.display = 'none';
+            this.nextElementSibling.style.display = 'flex';
+          "
+        />
+        <div class="enter-prewed-placeholder">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+          >
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <circle cx="8.5" cy="8.5" r="1.5" />
+            <path d="M21 15l-5-5L5 21" />
+          </svg>
+          <span>Prewedding Photo</span>
+        </div>
+      </div>
+
       <div class="enter-names">
         Kepada<br />
         <span class="enter-guest-name" id="enterGuestName">Invited Names</span>
@@ -2851,15 +2963,54 @@
       <!-- Envelope -->
       <div class="enter-envelope-wrap" id="enterEnvelopeWrap">
         <div class="env-ribbon">
-          <svg viewBox="0 0 110 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M55 20 C40 5 10 2 8 14 C6 24 30 28 55 20Z" fill="#c4a44a" opacity="0.55"/>
-            <path d="M55 20 C40 5 10 2 8 14 C6 24 30 28 55 20Z" stroke="#8b6914" stroke-width="0.8" fill="none"/>
-            <path d="M55 20 C70 5 100 2 102 14 C104 24 80 28 55 20Z" fill="#c4a44a" opacity="0.55"/>
-            <path d="M55 20 C70 5 100 2 102 14 C104 24 80 28 55 20Z" stroke="#8b6914" stroke-width="0.8" fill="none"/>
-            <path d="M55 20 L38 38" stroke="#8b6914" stroke-width="1.2" stroke-linecap="round"/>
-            <path d="M55 20 L72 38" stroke="#8b6914" stroke-width="1.2" stroke-linecap="round"/>
-            <circle cx="55" cy="20" r="4" fill="#c4a44a" opacity="0.9"/>
-            <circle cx="55" cy="20" r="4" stroke="#8b6914" stroke-width="0.8" fill="none"/>
+          <svg
+            viewBox="0 0 110 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M55 20 C40 5 10 2 8 14 C6 24 30 28 55 20Z"
+              fill="#c4a44a"
+              opacity="0.55"
+            />
+            <path
+              d="M55 20 C40 5 10 2 8 14 C6 24 30 28 55 20Z"
+              stroke="#8b6914"
+              stroke-width="0.8"
+              fill="none"
+            />
+            <path
+              d="M55 20 C70 5 100 2 102 14 C104 24 80 28 55 20Z"
+              fill="#c4a44a"
+              opacity="0.55"
+            />
+            <path
+              d="M55 20 C70 5 100 2 102 14 C104 24 80 28 55 20Z"
+              stroke="#8b6914"
+              stroke-width="0.8"
+              fill="none"
+            />
+            <path
+              d="M55 20 L38 38"
+              stroke="#8b6914"
+              stroke-width="1.2"
+              stroke-linecap="round"
+            />
+            <path
+              d="M55 20 L72 38"
+              stroke="#8b6914"
+              stroke-width="1.2"
+              stroke-linecap="round"
+            />
+            <circle cx="55" cy="20" r="4" fill="#c4a44a" opacity="0.9" />
+            <circle
+              cx="55"
+              cy="20"
+              r="4"
+              stroke="#8b6914"
+              stroke-width="0.8"
+              fill="none"
+            />
           </svg>
         </div>
         <div class="enter-envelope">
@@ -2873,9 +3024,30 @@
       </div>
 
       <button class="enter-btn" id="enter-btn" onclick="enterSite()" disabled>
-        <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 6px; vertical-align: middle;">
-          <rect x="0.5" y="0.5" width="13" height="11" rx="1.5" stroke="currentColor" stroke-width="1"/>
-          <path d="M1 3.5L6.5 7.5L12 3.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg
+          width="14"
+          height="12"
+          viewBox="0 0 14 12"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style="margin-right: 6px; vertical-align: middle"
+        >
+          <rect
+            x="0.5"
+            y="0.5"
+            width="13"
+            height="11"
+            rx="1.5"
+            stroke="currentColor"
+            stroke-width="1"
+          />
+          <path
+            d="M1 3.5L6.5 7.5L12 3.5"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
         </svg>
         Buka Undangan
       </button>
@@ -2916,11 +3088,11 @@
           </div>
           <div class="arrum-divider"></div>
           <p class="arrum-translation">
-            "Dan di antara tanda-tanda (kebesaran-Nya) ialah Dia menciptakan untukmu
-            pasangan dari jenismu sendiri, supaya kamu merasa tenteram kepadanya,
-            dan dijadikan-Nya di antaramu mawaddah dan rahmah. Sesungguhnya pada
-            yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah)
-            bagi kaum yang berpikir."
+            "Dan di antara tanda-tanda (kebesaran-Nya) ialah Dia menciptakan
+            untukmu pasangan dari jenismu sendiri, supaya kamu merasa tenteram
+            kepadanya, dan dijadikan-Nya di antaramu mawaddah dan rahmah.
+            Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda
+            (kebesaran Allah) bagi kaum yang berpikir."
           </p>
           <div class="arrum-source">QS. Ar-Rum : 21</div>
         </div>
@@ -3041,235 +3213,6 @@
 
       <!-- Story chapters -->
       <div class="story-content">
-        <!-- Prewedding photo frame + combined story -->
-        <div class="section-prewed story-section">
-          <div class="prewed-frame-outer">
-            <!-- Corner ornaments -->
-            <svg
-              class="prewed-corner prewed-corner-tl"
-              viewBox="0 0 44 44"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M2 2 L18 2 M2 2 L2 18"
-                stroke="#c4a44a"
-                stroke-width="1.2"
-                stroke-linecap="round"
-              />
-              <path
-                d="M2 2 Q13 2 13 13"
-                stroke="#c4a44a"
-                stroke-width="0.8"
-                stroke-linecap="round"
-                fill="none"
-              />
-              <circle cx="13" cy="13" r="2.2" fill="#c4a44a" opacity="0.7" />
-              <circle cx="2" cy="2" r="1.4" fill="#c4a44a" opacity="0.9" />
-              <path
-                d="M7 2 Q7 7 2 7"
-                stroke="#c4a44a"
-                stroke-width="0.7"
-                fill="none"
-                opacity="0.5"
-              />
-              <path
-                d="M2 10 Q7 10 7 15"
-                stroke="#c4a44a"
-                stroke-width="0.7"
-                fill="none"
-                opacity="0.5"
-              />
-            </svg>
-            <svg
-              class="prewed-corner prewed-corner-tr"
-              viewBox="0 0 44 44"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M2 2 L18 2 M2 2 L2 18"
-                stroke="#c4a44a"
-                stroke-width="1.2"
-                stroke-linecap="round"
-              />
-              <path
-                d="M2 2 Q13 2 13 13"
-                stroke="#c4a44a"
-                stroke-width="0.8"
-                stroke-linecap="round"
-                fill="none"
-              />
-              <circle cx="13" cy="13" r="2.2" fill="#c4a44a" opacity="0.7" />
-              <circle cx="2" cy="2" r="1.4" fill="#c4a44a" opacity="0.9" />
-              <path
-                d="M7 2 Q7 7 2 7"
-                stroke="#c4a44a"
-                stroke-width="0.7"
-                fill="none"
-                opacity="0.5"
-              />
-              <path
-                d="M2 10 Q7 10 7 15"
-                stroke="#c4a44a"
-                stroke-width="0.7"
-                fill="none"
-                opacity="0.5"
-              />
-            </svg>
-            <svg
-              class="prewed-corner prewed-corner-bl"
-              viewBox="0 0 44 44"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M2 2 L18 2 M2 2 L2 18"
-                stroke="#c4a44a"
-                stroke-width="1.2"
-                stroke-linecap="round"
-              />
-              <path
-                d="M2 2 Q13 2 13 13"
-                stroke="#c4a44a"
-                stroke-width="0.8"
-                stroke-linecap="round"
-                fill="none"
-              />
-              <circle cx="13" cy="13" r="2.2" fill="#c4a44a" opacity="0.7" />
-              <circle cx="2" cy="2" r="1.4" fill="#c4a44a" opacity="0.9" />
-              <path
-                d="M7 2 Q7 7 2 7"
-                stroke="#c4a44a"
-                stroke-width="0.7"
-                fill="none"
-                opacity="0.5"
-              />
-              <path
-                d="M2 10 Q7 10 7 15"
-                stroke="#c4a44a"
-                stroke-width="0.7"
-                fill="none"
-                opacity="0.5"
-              />
-            </svg>
-            <svg
-              class="prewed-corner prewed-corner-br"
-              viewBox="0 0 44 44"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M2 2 L18 2 M2 2 L2 18"
-                stroke="#c4a44a"
-                stroke-width="1.2"
-                stroke-linecap="round"
-              />
-              <path
-                d="M2 2 Q13 2 13 13"
-                stroke="#c4a44a"
-                stroke-width="0.8"
-                stroke-linecap="round"
-                fill="none"
-              />
-              <circle cx="13" cy="13" r="2.2" fill="#c4a44a" opacity="0.7" />
-              <circle cx="2" cy="2" r="1.4" fill="#c4a44a" opacity="0.9" />
-              <path
-                d="M7 2 Q7 7 2 7"
-                stroke="#c4a44a"
-                stroke-width="0.7"
-                fill="none"
-                opacity="0.5"
-              />
-              <path
-                d="M2 10 Q7 10 7 15"
-                stroke="#c4a44a"
-                stroke-width="0.7"
-                fill="none"
-                opacity="0.5"
-              />
-            </svg>
-            <div class="prewed-frame-inner">
-              <!-- Replace src with your prewedding photo filename -->
-              <img
-                src="prewed.jpg"
-                alt="Prewedding photo"
-                onerror="
-                  this.style.display = 'none';
-                  this.nextElementSibling.style.display = 'flex';
-                "
-              />
-              <div class="prewed-placeholder" style="display: none">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1"
-                >
-                  <rect x="3" y="3" width="18" height="18" rx="2" />
-                  <circle cx="8.5" cy="8.5" r="1.5" />
-                  <path d="M21 15l-5-5L5 21" />
-                </svg>
-                <span>Prewedding Photo</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Combined Chapter I & II below the photo -->
-          <div class="prewed-story">
-            <div class="prewed-story-chapter">
-              <div style="text-align: center; margin-bottom: 18px">
-                <div
-                  style="
-                    font-family: &quot;Great Vibes&quot;, cursive;
-                    font-size: clamp(28px, 7vw, 38px);
-                    color: var(--gold);
-                    line-height: 1;
-                  "
-                >
-                 </div>
-                <div
-                  style="
-                    display: flex;
-                    align-items: center;
-                    gap: 12px;
-                    margin-top: 10px;
-                    opacity: 0.55;
-                  "
-                >
-                  <span
-                    style="
-                      flex: 1;
-                      height: 1px;
-                      background: linear-gradient(
-                        90deg,
-                        transparent,
-                        var(--gold-light),
-                        transparent
-                      );
-                    "
-                  ></span>
-                  <span style="color: var(--gold); font-size: 16px">✦</span>
-                  <span
-                    style="
-                      flex: 1;
-                      height: 1px;
-                      background: linear-gradient(
-                        90deg,
-                        transparent,
-                        var(--gold-light),
-                        transparent
-                      );
-                    "
-                  ></span>
-                </div>
-              </div>
-         
-              </div>
-            </div>
-          </div>
-        </div>
-
         <!-- Portrait — couple photo -->
 
         <!-- Countdown — ticket / boarding-pass style -->
@@ -3279,7 +3222,6 @@
               <div class="ticket-shimmer"></div>
               <div class="ticket-top">
                 <div class="ticket-eyebrow">Hari Bahagia</div>
-                <div class="ticket-names">Farhan & Erina</div>
                 <div class="ticket-date-band">
                   <span class="td-sep"></span>
                   <span>9 Agustus, 2026</span>
@@ -3318,48 +3260,49 @@
         <!-- Invitation inline section -->
         <section class="invite-inline" id="inviteInline">
           <div class="invite-card">
-            <div class="together">Assalamu'alaikum Warahmatullahi Wabarakatuh</div>
+            <div class="together">Bersama keluarga tercinta</div>
             <p class="invite-text">
-              Dengan memohon rahmat dan ridho Allah Subhanahu Wa Ta’ala, insyaa Allah kami akan menyelenggarakan acara pernikahan :
+              dengan penuh kebahagiaan mengundang<br /><strong
+                id="guest-name-card"
+              ></strong
+              ><br />di acara Ngunduh Mantu
             </p>
-            <div class="couple-names" style="margin-bottom: 2px;">
-              Erina Khalisah Nurindriyani
-            </div>
-            <div class="parents-name" style="font-style: normal; font-size: clamp(13px, 3.5vw, 15px); opacity: 0.85; margin-bottom: 12px;">
-              Putri dari Bapak Mohammad Imam Syafi'ih &amp; Ibu Siti Jukhairiyah
-            </div>
-            
-            <div class="amp" style="font-family: 'Great Vibes', cursive; font-size: clamp(34px, 8vw, 42px); color: var(--gold); margin: 6px 0;">&amp;</div>
-            
-            <div class="couple-names" style="margin-top: 12px; margin-bottom: 2px;">
+            <div class="couple-names">
               Muhammad Farhan Binashrillah
-            </div>
-            <div class="parents-name" style="font-style: normal; font-size: clamp(13px, 3.5vw, 15px); opacity: 0.85; margin-bottom: 8px;">
-              Putra dari Bapak Dedy Wirawan Soedibyo &amp; Ibu Ika Wahyurini
+              <span class="amp">&amp;</span>
+              Erina Khalisah Nurindriyani
             </div>
 
             <div class="invite-divider">
               <span></span><span class="divider-icon">❧</span><span></span>
             </div>
             <p class="invite-text">
-              Mari bersama merayakan cinta,<br />kebahagiaan, dan awal baru<br />dalam hidup berdua.
+              Mari bersama merayakan cinta,<br />kebahagiaan, dan awal baru<br />dalam
+              hidup berdua.
             </p>
             <div class="date-block">
               <div class="date-label">Ngunduh Mantu</div>
-              <div class="date-main">MINGGU, 9 AGUSTUS 2026</div>
+              <div class="date-main">Minggu, 9 Agustus 2026</div>
               <div class="date-time">Pagi · 10:30 WIB</div>
             </div>
             <div class="venue-block">
-              <div class="venue-name">LESTARI RESTAURANT</div>
-              <div class="venue-address">Jln. Kartini NO 4 - 9, Kota Jember, Jawa Timur</div>
+              <div class="venue-name">Lestari Restaurant</div>
+              <div class="venue-address">Kota Jember, Jawa Timur</div>
               <a
                 class="map-btn"
                 href="https://www.google.com/maps/search/?api=1&query=Lestari+Restaurant+Jember"
                 target="_blank"
                 rel="noopener"
               >
-                <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor">
-                  <path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5a.5.5 0 0 0 .5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5a.5.5 0 0 0-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/>
+                <svg
+                  viewBox="0 0 24 24"
+                  width="11"
+                  height="11"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5a.5.5 0 0 0 .5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5a.5.5 0 0 0-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"
+                  />
                 </svg>
                 Lihat di Peta
               </a>
@@ -3369,37 +3312,86 @@
             <div class="rsvp-inline">
               <div class="rsvp-inline-label">Konfirmasi Kehadiran</div>
               <div class="rsvp-inline-btns">
-                <button class="rsvp-choice-btn rsvp-choice-yes" id="rsvpYes" onclick="setRsvp(true)">
-                  <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor" style="margin-right: 5px; vertical-align: middle;">
-                    <path d="M16.707 5.293a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 1.414-1.414L8 12.586l7.293-7.293a1 1 0 0 1 1.414 0z"/>
+                <button
+                  class="rsvp-choice-btn rsvp-choice-yes"
+                  id="rsvpYes"
+                  onclick="setRsvp(true)"
+                >
+                  <svg
+                    viewBox="0 0 20 20"
+                    width="14"
+                    height="14"
+                    fill="currentColor"
+                    style="margin-right: 5px; vertical-align: middle"
+                  >
+                    <path
+                      d="M16.707 5.293a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 1.414-1.414L8 12.586l7.293-7.293a1 1 0 0 1 1.414 0z"
+                    />
                   </svg>
                   Ya, saya hadir
                 </button>
-                <button class="rsvp-choice-btn rsvp-choice-no" id="rsvpNo" onclick="setRsvp(false)">
-                  <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor" style="margin-right: 5px; vertical-align: middle;">
-                    <path d="M4.293 4.293a1 1 0 0 1 1.414 0L10 8.586l4.293-4.293a1 1 0 1 1 1.414 1.414L11.414 10l4.293 4.293a1 1 0 0 1-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 0 1-1.414-1.414L8.586 10 4.293 5.707a1 1 0 0 1 0-1.414z"/>
+                <button
+                  class="rsvp-choice-btn rsvp-choice-no"
+                  id="rsvpNo"
+                  onclick="setRsvp(false)"
+                >
+                  <svg
+                    viewBox="0 0 20 20"
+                    width="14"
+                    height="14"
+                    fill="currentColor"
+                    style="margin-right: 5px; vertical-align: middle"
+                  >
+                    <path
+                      d="M4.293 4.293a1 1 0 0 1 1.414 0L10 8.586l4.293-4.293a1 1 0 1 1 1.414 1.414L11.414 10l4.293 4.293a1 1 0 0 1-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 0 1-1.414-1.414L8.586 10 4.293 5.707a1 1 0 0 1 0-1.414z"
+                    />
                   </svg>
                   Maaf, tidak bisa
                 </button>
               </div>
               <div class="rsvp-status" id="rsvpStatus"></div>
-              <div class="rsvp-notes-wrap" id="rsvpNotesWrap" style="display:none;">
+              <div
+                class="rsvp-notes-wrap"
+                id="rsvpNotesWrap"
+                style="display: none"
+              >
                 <textarea
                   class="rsvp-input rsvp-notes-input"
                   id="rsvpNotes"
                   rows="2"
                   placeholder="Pesan atau ucapan untuk pengantin..."
                 ></textarea>
-                <button class="rsvp-btn rsvp-send-btn" onclick="sendRsvpNotes()">Kirim</button>
+                <button
+                  class="rsvp-btn rsvp-send-btn"
+                  onclick="sendRsvpNotes()"
+                >
+                  Kirim
+                </button>
               </div>
             </div>
           </div>
         </section>
         <div style="position: relative; height: 220px; flex-shrink: 0">
-          <img class="screen-leaf screen-leaf-bl1" src="left-bottom-leaf-bottom.png" alt="" />
-          <img class="screen-leaf screen-leaf-bl1 screen-leaf-bl1-top" src="left-bottom-leaf-top.png" alt="" />
-          <img class="screen-leaf screen-leaf-br1" src="right-bottom-leaf-bottom.png" alt="" />
-          <img class="screen-leaf screen-leaf-br1 screen-leaf-br1-top" src="right-bottom-leaf-top.png" alt="" />
+          <img
+            class="screen-leaf screen-leaf-bl1"
+            src="left-bottom-leaf-bottom.png"
+            alt=""
+          />
+          <img
+            class="screen-leaf screen-leaf-bl1 screen-leaf-bl1-top"
+            src="left-bottom-leaf-top.png"
+            alt=""
+          />
+          <img
+            class="screen-leaf screen-leaf-br1"
+            src="right-bottom-leaf-bottom.png"
+            alt=""
+          />
+          <img
+            class="screen-leaf screen-leaf-br1 screen-leaf-br1-top"
+            src="right-bottom-leaf-top.png"
+            alt=""
+          />
           <img class="screen-leaf-mid" src="middle-bottom-leaf.png" alt="" />
         </div>
       </div>
@@ -3412,10 +3404,21 @@
         <div class="rsvp-modal-title">Apakah Anda bisa hadir?</div>
         <form class="rsvp-form" id="rsvpForm" onsubmit="submitRsvp(event)">
           <div class="rsvp-radios">
-            <label><input type="radio" name="attending" value="true" required />Ya, saya hadir</label>
-            <label><input type="radio" name="attending" value="false" />Maaf, tidak bisa</label>
+            <label
+              ><input type="radio" name="attending" value="true" required />Ya,
+              saya hadir</label
+            >
+            <label
+              ><input type="radio" name="attending" value="false" />Maaf, tidak
+              bisa</label
+            >
           </div>
-          <textarea name="message" class="rsvp-input" rows="2" placeholder="Pesan untuk pengantin (opsional)"></textarea>
+          <textarea
+            name="message"
+            class="rsvp-input"
+            rows="2"
+            placeholder="Pesan untuk pengantin (opsional)"
+          ></textarea>
           <button type="submit" class="rsvp-btn">Kirim RSVP</button>
           <div class="rsvp-thanks" id="rsvpThanks">
             <div class="thanks-mark">❧</div>
@@ -3554,7 +3557,9 @@
 
       function sendRsvpNotes() {
         const notes = document.getElementById("rsvpNotes").value;
-        const guestName = new URLSearchParams(window.location.search).get("to") || "Tamu Undangan";
+        const guestName =
+          new URLSearchParams(window.location.search).get("to") ||
+          "Tamu Undangan";
         if (rsvpChoice === null) return;
         const status = document.getElementById("rsvpStatus");
         status.textContent = "Terima kasih atas konfirmasinya! ✦";
@@ -3562,13 +3567,19 @@
         const notesWrap = document.getElementById("rsvpNotesWrap");
         notesWrap.style.display = "none";
         if (supabase) {
-          supabase.from("guests").upsert({
-            name: guestName,
-            attending: rsvpChoice,
-            message: notes || "",
-          }, { onConflict: "name" }).then(({ error }) => {
-            if (error) console.error("Supabase error:", error);
-          });
+          supabase
+            .from("guests")
+            .upsert(
+              {
+                name: guestName,
+                attending: rsvpChoice,
+                message: notes || "",
+              },
+              { onConflict: "name" },
+            )
+            .then(({ error }) => {
+              if (error) console.error("Supabase error:", error);
+            });
         }
       }
 
@@ -3638,7 +3649,9 @@
         const formData = new FormData(form);
         const attending = formData.get("attending") === "true";
         const message = formData.get("message") || "";
-        const guestName = new URLSearchParams(window.location.search).get("to") || "Tamu Undangan";
+        const guestName =
+          new URLSearchParams(window.location.search).get("to") ||
+          "Tamu Undangan";
 
         form.classList.add("sent");
         const rect = form.getBoundingClientRect();
@@ -3647,13 +3660,16 @@
         burstLeavesAt(cx, cy, 22);
 
         if (supabase) {
-          supabase.from("guests").insert({
-            name: guestName,
-            attending: attending,
-            message: message,
-          }).then(({ error }) => {
-            if (error) console.error("Supabase error:", error);
-          });
+          supabase
+            .from("guests")
+            .insert({
+              name: guestName,
+              attending: attending,
+              message: message,
+            })
+            .then(({ error }) => {
+              if (error) console.error("Supabase error:", error);
+            });
         }
       }
     </script>
@@ -3752,29 +3768,24 @@
         enter.classList.add("fade-out");
         startMusic();
 
-        // Step 2: open envelope
-        const envWrap = document.getElementById("enterEnvelopeWrap");
-        envWrap.classList.add("open");
-        burstLeavesFromEnvelope();
-
-        // Step 3: zoom in gate (after envelope opens ~1s)
+        // Step 2: zoom in gate (no envelope — starts immediately)
         setTimeout(() => {
           gate.classList.add("zoom-in");
-        }, 1100);
+        }, 600);
 
-        // Step 4: open gate doors (after zoom-in settles ~1.2s)
+        // Step 3: open gate doors (after zoom-in settles ~1.2s)
         setTimeout(() => {
           openGate();
-        }, 2300);
+        }, 1800);
 
-        // Step 5: reveal story (after doors open ~1.2s)
+        // Step 4: reveal story (after doors open ~1.2s)
         setTimeout(() => {
           const story = document.getElementById("story-screen");
           story.classList.add("visible");
           spawnFallingLeaves();
           initScrollReveal();
           initProgressBar();
-        }, 3500);
+        }, 3000);
       }
 
       // Preload all images, enable button when done
@@ -3792,6 +3803,7 @@
           "left-gate.png",
           "right-gate.png",
           "landscape.png",
+          "prewed.jpg",
           "leaf-left.png",
           "leaf-right.png",
           "small-leaf-left.png",
@@ -3827,3 +3839,7 @@
     </script>
   </body>
 </html>
+
+abi azfar brilli egan farah haqi laela larissa sabda airell putri dieffa sasa
+umar adel rikma wahyu tomi guin dharma wildan fara adris rafi galang irma veni
+lili michelle fira anie ceicilia kenny rully galih rezal prabowo alfito bayu
