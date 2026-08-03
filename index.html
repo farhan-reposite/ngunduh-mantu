@@ -242,6 +242,13 @@
         color: var(--gold);
         line-height: 1.4;
       }
+      .enter-names-wrap {
+        background: #ffffff;
+        border: 1.5px solid rgba(196, 164, 74, 0.5);
+        border-radius: 8px;
+        padding: 20px 32px;
+        box-shadow: 0 4px 20px rgba(80, 50, 10, 0.12);
+      }
       .enter-btn {
         margin-top: 28px;
         font-family: "Cinzel", serif;
@@ -250,11 +257,10 @@
         letter-spacing: 0.45em;
         text-transform: uppercase;
         color: #5a3a0a;
-        background: none;
+        background: #ffffff;
         border: 1.5px solid rgba(139, 105, 20, 0.7);
         padding: 12px 28px;
         cursor: pointer;
-        animation: pulse 2.2s ease-in-out infinite;
         transition: opacity 0.4s ease;
       }
       .enter-btn:disabled {
@@ -2843,9 +2849,11 @@
   <body>
     <!-- Enter screen -->
     <div id="enter-screen">
-      <div class="enter-names">
-        Kepada<br />
-        <span class="enter-guest-name" id="enterGuestName">Invited Names</span>
+      <div class="enter-names-wrap">
+        <div class="enter-names">
+          Kepada<br />
+          <span class="enter-guest-name" id="enterGuestName">Invited Names</span>
+        </div>
       </div>
 
       <!-- Envelope -->
